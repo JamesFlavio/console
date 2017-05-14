@@ -21,7 +21,7 @@ body {
     padding-left: 0;
 }
 
-#page-wrapper {
+#centro {
     width: 100%;
     padding: 0;
     background-color: #fff;
@@ -37,7 +37,7 @@ body {
         padding-left: 225px;
     }
 
-    #page-wrapper {
+    #centro {
         padding: 10px;
     }
 }
