@@ -23,7 +23,7 @@
 		include("conexao-mysql.php");
 
 		$mysqlListagem 	="
-		SELECT id, cnpj_ou_cpf, razao_social_ou_nome FROM fornecedores;
+		SELECT id, cnpj_ou_cpf, razao_social_ou_nome, nome_fantasia_ou_sobrenome FROM fornecedores;
 		"; 
 		# $sqlListagem
 
@@ -37,9 +37,10 @@
 		while($rowListagem = mysqli_fetch_assoc($queryListagem)) {
 
 				// Faz captura de campos
-				$id						= $rowListagem["id"];
-				$cnpj_ou_cpf			= $rowListagem["cnpj_ou_cpf"];
-				$razao_social_ou_nome	= $rowListagem["razao_social_ou_nome"];
+				$id							= $rowListagem["id"];
+				$cnpj_ou_cpf				= $rowListagem["cnpj_ou_cpf"];
+				$razao_social_ou_nome		= $rowListagem["razao_social_ou_nome"];
+				$nome_fantasia_ou_sobrenome	= $rowListagem["nome_fantasia_ou_sobrenome"];
 		
 		
 		?>
@@ -47,9 +48,9 @@
 		
 		  <tr>
 			<td><?php echo $id;?></td>
-			<td><?php echo $cnpj_ou_cpf;?></td>
 			<td><?php echo $razao_social_ou_nome;?></td>
-			<td>john@example.com</td>
+			<td><?php echo $nome_fantasia_ou_sobrenome;?></td>
+			<td><?php echo $cnpj_ou_cpf;?></td>
 			<td>Brasília</td>
 			<td>DF</td>
 		  </tr>

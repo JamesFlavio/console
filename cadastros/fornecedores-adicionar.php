@@ -1,43 +1,32 @@
-<script type="text/javascript">
-function validaCampo()
-{
-if(document.cadastro.razao_social_ou_nome.value=="")
-	{
-	alert("O Campo nome é obrigatório!");
-	return false;
-	}
-else
-return true;
-}
-</script>
-<!-- Fim do JavaScript que validará os campos obrigatórios! -->
-
-
 <div class="col-lg-12" >
 
 <?php
 
-$cmd 						= $_GET ["cmd"];
+@$cmd 						= $_GET ["cmd"];
 
-$cnpj_ou_cpf				= $_POST ["cnpj_ou_cpf"];
-$ie_ou_rg					= $_POST ["ie_ou_rg"];
-$im							= $_POST ["im"];
-$razao_social_ou_nome		= $_POST ["razao_social_ou_nome"];
-$nome_fantasia_ou_sobrenome	= $_POST ["nome_fantasia_ou_sobrenome"];
-$apelido					= $_POST ["apelido"];
-$cep						= $_POST ["cep"];
-$endereco					= $_POST ["endereco"];
-$numero						= $_POST ["numero"];
-$bairro						= $_POST ["bairro"];
-$telefones					= $_POST ["telefones"];
-$ramais						= $_POST ["ramais"];
-$fax						= $_POST ["fax"];
-$celular					= $_POST ["celular"];
-$responsaveis				= $_POST ["responsaveis"];
-$sites						= $_POST ["sites"];
-$novidades					= $_POST ["novidades"];
-$promocoes					= $_POST ["promocoes"];
-$observacoes				= $_POST ["observacoes"];
+@$cnpj_ou_cpf				= $_POST ["cnpj_ou_cpf"];
+@$ie_ou_rg					= $_POST ["ie_ou_rg"];
+@$im						= $_POST ["im"];
+@$razao_social_ou_nome		= $_POST ["razao_social_ou_nome"];
+@$nome_fantasia_ou_sobrenome= $_POST ["nome_fantasia_ou_sobrenome"];
+@$apelido					= $_POST ["apelido"];
+@$cep						= $_POST ["cep"];
+@$cidade					= $_POST ["cidade"];
+@$uf						= $_POST ["uf"];
+@$endereco					= $_POST ["endereco"];
+@$numero					= $_POST ["numero"];
+@$bairro					= $_POST ["bairro"];
+@$complemento				= $_POST ["complemento"];
+@$telefones					= $_POST ["telefones"];
+@$ramais					= $_POST ["ramais"];
+@$fax						= $_POST ["fax"];
+@$celular					= $_POST ["celular"];
+@$responsaveis				= $_POST ["responsaveis"];
+@$emails					= $_POST ["emails"];
+@$sites						= $_POST ["sites"];
+@$novidades					= $_POST ["novidades"];
+@$promocoes					= $_POST ["promocoes"];
+@$observacoes				= $_POST ["observacoes"];
 
 switch ($cmd) {
 case "adicionar":
@@ -65,14 +54,6 @@ case "adicionar":
 			</select>
 		</div>
 	
-		<div class="form-group has-warning">
-			<label>UF</label>
-			<select class="form-control">
-				<option>DF - Distrito Federal</option>
-				<option>GO - Goiás</option>
-			</select>
-		</div>
-
 		<div class="form-group has-warning">
 			<label>CNPJ ou CPF</label>
 			<input type="text" name="cnpj_ou_cpf" value="<?php echo $cnpj_ou_cpf;?>" class="form-control" placeholder="CNPJ ou CPF">
@@ -105,7 +86,20 @@ case "adicionar":
 <hr>
 		<div class="form-group has-warning">
 			<label>CEP</label>
-			<input type="text" name="cep" value="<?php echo $cep;?>" class="form-control" placeholder="CEP">
+			<input type="text" id="cep" name="cep" value="<?php echo $cep;?>" onfocusout="consultaCep();" class="form-control" placeholder="CEP">
+		</div>
+
+		<div class="form-group has-warning">
+			<label>Cidade</label>
+			<input type="text" name="cidade" value="<?php echo $cidade;?>" class="form-control" placeholder="Cidade">
+		</div>
+
+		<div class="form-group has-warning">
+			<label>UF</label>
+			<select name="uf" class="form-control">
+				<option value="DF">DF - Distrito Federal</option>
+				<option value="GO">GO - Goiás</option>
+			</select>
 		</div>
 
 		<div class="form-group has-warning">
@@ -160,14 +154,14 @@ case "adicionar":
 			<input type="text" name="responsaveis" value="<?php echo $responsaveis;?>" class="form-control" placeholder="Responsáveis">
 		</div>
 
+		<div class="form-group input-group has-warning">
+			<span class="input-group-addon">@</span>
+			<input type="text" name="email" value="<?php echo $emails;?>" class="form-control" placeholder="E-mail">
+		</div>
+
 		<div class="form-group">
 			<label>Sites</label>
 			<input type="text" name="sites" value="<?php echo $sites;?>" class="form-control" placeholder="Sites">
-		</div>
-
-		<div class="form-group input-group has-warning">
-			<span class="input-group-addon">@</span>
-			<input type="text" name="email" value="<?php echo $email;?>" class="form-control" placeholder="E-mail">
 		</div>
 
 		<div class="form-group">
@@ -211,9 +205,11 @@ case "adicionar":
             </div>
         </div>
 
-        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <button type="button" class="btn btn-primary" onclick="document.getElementById('cadastro').submit();">Cadastrar</button>
 
     </form>
 
 </div>
 <!-- /.row -->
+
+<script src="js/fornecedores-adicionar.js"></script>
