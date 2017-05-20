@@ -11,14 +11,14 @@ BUGs
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
-                Fornecedores
+                Transportadoras
             </h1>
             <ol class="breadcrumb">
                 <li>
                     <i class="fa fa-dashboard"></i> <a href="./">Dashboard</a>
                 </li>
                 <li class="active">
-                    <i class="fa fa-edit"></i> <a href="?console=cadastrosFornedores">Fornecedores</a>
+                    <i class="fa fa-edit"></i> <a href="?console=cadastrosTransportadoras">Transportadoras</a>
                 </li>
             </ol>
         </div>
@@ -60,7 +60,7 @@ BUGs
 	@$console = $_GET ['acao'];
 	
 	// Filtro para ações da página Cadastros filtrado do campo cadastros>cadastros.tipo
-	$tipo = 1;
+	$tipo = 2;
 	
 	switch ($console) {
 	case "adicionar":

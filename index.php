@@ -165,10 +165,13 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-edit"></i> Cadastros <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="#">Clientes</a>
+                                <a href="?console=cadastrosClientes">Clientes</a>
                             </li>
                             <li>
                                 <a href="?console=cadastrosFornedores">Fornecedores</a>
+                            </li>
+                            <li>
+                                <a href="?console=cadastrosTransportadoras">Transportadoras</a>
                             </li>
                             <li>
                                 <a href="#">Produtos</a>
@@ -214,9 +217,19 @@
 				@$console = $_GET ['console'];
 				
 				switch ($console) {
+
+				case "cadastrosClientes":
+					include("cadastros/clientes.php");
+					break;
+
 				case "cadastrosFornedores":
 					include("cadastros/fornecedores.php");
 					break;
+
+				case "cadastrosTransportadoras":
+					include("cadastros/transportadoras.php");
+					break;
+
 				default:
 					include("dashboard.php");
 				

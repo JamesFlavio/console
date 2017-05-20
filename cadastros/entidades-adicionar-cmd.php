@@ -50,14 +50,11 @@ observacoes							:	$observacoes				<br>
 */
 
 
-# Consulta se o CNPJ ou CPF ja não consta na base de dados
-
 include("php/conexao-mysql.php");
 
-$sqlConsulta 	= "SELECT cnpj_ou_cpf FROM fornecedores WHERE cnpj_ou_cpf = '$cnpj_ou_cpf';";
-
+# Consulta se o CNPJ ou CPF ja não consta na base de dados
+$sqlConsulta 	= "SELECT cnpj_ou_cpf FROM cadastros WHERE cnpj_ou_cpf = '$cnpj_ou_cpf';";
 $queryConsulta	= mysqli_query($conexaoMysql, $sqlConsulta);
-
 $quantidade		= mysqli_num_rows($queryConsulta);
 
 if(!$queryConsulta){ # Verifica se a consulta não deu erro
@@ -70,13 +67,13 @@ if($quantidade==0){
 	if($razao_social_ou_nome != ""){
 
 		// ??? A CIDADE NÃO FOI INCLUSA AQUI POIS VIRÁ ATRAVÉS DA SELEÇÃO DO CEP
-		$cmdFornecedoresAdicionar 	="
-		INSERT INTO fornecedores	(  cnpj_ou_cpf,		  ie_ou_rg,		  im,	  razao_social_ou_nome,	  nome_fantasia_ou_sobrenome,   apelido,	 ceps_cep, ceps_cidades_ibge, ceps_cidades_estados_uf,	  endereco,   numero,   bairro,		  telefones,	ramais,	 fax,	  celular,	  responsaveis,		  sites,	novidades,	  promocoes,	 observacoes)
-		VALUES 						('$cnpj_ou_cpf',	'$ie_ou_rg',	'$im',	'$razao_social_ou_nome','$nome_fantasia_ou_sobrenome','$apelido',		'$cep',			  '$ibge',					 '$uf', '$endereco','$numero','$bairro',	'$telefones', '$ramais', '$fax',	'$celular', '$responsaveis',	'$sites', '$novidades', '$promocoes' , '$observacoes');
+		$cmdcadastrosAdicionar 	="
+		INSERT INTO cadastros	(  tipo,	cnpj_ou_cpf,	  ie_ou_rg,		  im,	  razao_social_ou_nome,	  nome_fantasia_ou_sobrenome,   apelido,	 ceps_cep, ceps_cidades_ibge, ceps_cidades_estados_uf,	  endereco,   numero,   bairro,		  telefones,	ramais,	 fax,	  celular,	  responsaveis,		  sites,	novidades,	  promocoes,	 observacoes)
+		VALUES 					('$tipo', '$cnpj_ou_cpf',	'$ie_ou_rg',	'$im',	'$razao_social_ou_nome','$nome_fantasia_ou_sobrenome','$apelido',		'$cep',			  '$ibge',					 '$uf', '$endereco','$numero','$bairro',	'$telefones', '$ramais', '$fax',	'$celular', '$responsaveis',	'$sites', '$novidades', '$promocoes' , '$observacoes');
 		"; 
-		#cmdFornecedoresAdicionar
+		#cmdcadastrosAdicionar
 
-		$query = mysqli_query($conexaoMysql, $cmdFornecedoresAdicionar);
+		$query = mysqli_query($conexaoMysql, $cmdcadastrosAdicionar);
 
 		if(!$query){
 			echo "Erro!";

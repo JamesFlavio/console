@@ -11,6 +11,10 @@
 // 06: Verificar a adição de CEP caso o mesmo não seja encontrado.
 // 07: URGENTE - CEPS não estão sendo adicionados quando a cidade é a mesma para DF
 // 08: Quando o CEP da função 7 não está sendo cadastrado, não está sendo exibido o erro
+// 09: Está sendo obrigado a informar o cep, então verificar a mensagem de erro na hora
+// do cadastro sem o CEP e informar ao usuário
+// 10: Deopis de cadastrado um fornecedor, se tentar consultar outro CNPJ ele apresenta
+// uma mensagem de erro. 
 
 
 @$cmd 						= $_GET ["cmd"];
@@ -42,7 +46,7 @@
 
 switch ($cmd) {
 case "adicionar":
-	include("cadastros/fornecedores-adicionar-cmd.php");
+	include("cadastros/entidades-adicionar-cmd.php");
 	break;
 };	
 
@@ -251,4 +255,4 @@ case "adicionar":
 </div>
 <!-- /.row -->
 
-<script src="js/fornecedores-adicionar.js"></script>
+<script src="js/entidades-adicionar.js"></script>

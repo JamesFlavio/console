@@ -25,8 +25,9 @@
 		$mysqlListagem 	="
 		SELECT id, cnpj_ou_cpf, razao_social_ou_nome, nome_fantasia_ou_sobrenome, ceps_cidades_estados_uf,
 		cidades.nome AS cidades_nome
-		FROM fornecedores
-		JOIN cidades ON cidades.ibge = fornecedores.ceps_cidades_ibge;
+		FROM cadastros
+		JOIN cidades ON cidades.ibge = cadastros.ceps_cidades_ibge
+		WHERE cadastros.tipo LIKE '%$tipo%';
 		"; 
 		# $sqlListagem
 
