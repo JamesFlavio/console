@@ -234,7 +234,7 @@
 				<div class="modal-content">
 				  <div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Modal Header</h4>
+					<h4 class="modal-title"><!-- Modal Header --></h4>
 				  </div>
 				  <div class="modal-body">
 					<p>...</p>
@@ -259,11 +259,6 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-
-    <!-- Morris Charts JavaScript -->
-    <script src="js/plugins/morris/raphael.min.js"></script>
-    <script src="js/plugins/morris/morris.min.js"></script>
-    <script src="js/plugins/morris/morris-data.js"></script>
 
 </body>
 

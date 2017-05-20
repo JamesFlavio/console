@@ -7,6 +7,8 @@ $razao_social_ou_nome		= $_POST ["razao_social_ou_nome"];
 $nome_fantasia_ou_sobrenome	= $_POST ["nome_fantasia_ou_sobrenome"];
 $apelido					= $_POST ["apelido"];
 $cep						= $_POST ["cep"];
+$cidade						= $_POST ["cidade"]; // ??? NÃO UTILIZADO POIS VEM DO CEP
+$ibge						= $_POST ["ibge"];
 $endereco					= $_POST ["endereco"];
 $numero						= $_POST ["numero"];
 $bairro						= $_POST ["bairro"];
@@ -20,28 +22,57 @@ $novidades					= $_POST ["novidades"];
 $promocoes					= $_POST ["promocoes"];
 $observacoes				= $_POST ["observacoes"];
 
+/*
+echo "
+cnpj_ou_cpf							:	$cnpj_ou_cpf				<br>
+ie_ou_rg							:	$ie_ou_rg					<br>
+im									:	$im							<br>
+razao_social_ou_nome				:	$razao_social_ou_nome		<br>
+nome_fantasia_ou_sobrenome			:	$nome_fantasia_ou_sobrenome	<br>
+apelido								:	$apelido					<br>
+cep									:	$cep						<br>
+cidade								:	$cidade						<br>
+uf									:	$uf							<br>
+ibge								:	$ibge						<br>
+endereco							:	$endereco					<br>
+numero								:	$numero						<br>
+bairro								:	$bairro						<br>
+telefones							:	$telefones					<br>
+ramais								:	$ramais						<br>
+fax									:	$fax						<br>
+celular								:	$celular					<br>
+responsaveis						:	$responsaveis				<br>
+sites								:	$sites						<br>
+novidades							:	$novidades					<br>
+promocoes							:	$promocoes					<br>
+observacoes							:	$observacoes				<br>
+";
+*/
+
+
 # Consulta se o CNPJ ou CPF ja não consta na base de dados
 
-include("conexao-mysql.php");
+include("php/conexao-mysql.php");
 
-$sqlConsulta 	= "SELECT cnpj_ou_cpf FROM fornecedores WHERE cnpj_ou_cpf = $cnpj_ou_cpf;";
+$sqlConsulta 	= "SELECT cnpj_ou_cpf FROM fornecedores WHERE cnpj_ou_cpf = '$cnpj_ou_cpf';";
 
 $queryConsulta	= mysqli_query($conexaoMysql, $sqlConsulta);
 
+$quantidade		= mysqli_num_rows($queryConsulta);
+
 if(!$queryConsulta){ # Verifica se a consulta não deu erro
-	echo "Erro: queryConsulta!";
+	echo "Erro: queryConsulta! ".mysqli_error($queryConsulta);
 };
 
-$quantidade = mysqli_num_rows($queryConsulta);
 
-if($quantidade=0){
+if($quantidade==0){
 
 	if($razao_social_ou_nome != ""){
 
-
+		// ??? A CIDADE NÃO FOI INCLUSA AQUI POIS VIRÁ ATRAVÉS DA SELEÇÃO DO CEP
 		$cmdFornecedoresAdicionar 	="
-		INSERT INTO fornecedores	(cnpj_ou_cpf, ie_ou_rg, im, razao_social_ou_nome, nome_fantasia_ou_sobrenome, apelido, cep, endereco, numero, bairro, telefones, ramais, fax, celular, responsaveis, sites, novidades, promocoes, observacoes)
-		VALUES 						('$cnpj_ou_cpf' , '$ie_ou_rg' , '$im' , '$razao_social_ou_nome' , '$nome_fantasia_ou_sobrenome' , '$apelido' , '$cep' , '$endereco' , '$numero' , '$bairro' , '$telefones' , '$ramais' , '$fax' , '$celular' , '$responsaveis' , '$sites' , '$novidades' , '$promocoes' , '$observacoes');
+		INSERT INTO fornecedores	(  cnpj_ou_cpf,		  ie_ou_rg,		  im,	  razao_social_ou_nome,	  nome_fantasia_ou_sobrenome,   apelido,	 ceps_cep, ceps_cidades_ibge, ceps_cidades_estados_uf,	  endereco,   numero,   bairro,		  telefones,	ramais,	 fax,	  celular,	  responsaveis,		  sites,	novidades,	  promocoes,	 observacoes)
+		VALUES 						('$cnpj_ou_cpf',	'$ie_ou_rg',	'$im',	'$razao_social_ou_nome','$nome_fantasia_ou_sobrenome','$apelido',		'$cep',			  '$ibge',					 '$uf', '$endereco','$numero','$bairro',	'$telefones', '$ramais', '$fax',	'$celular', '$responsaveis',	'$sites', '$novidades', '$promocoes' , '$observacoes');
 		"; 
 		#cmdFornecedoresAdicionar
 
@@ -57,7 +88,9 @@ if($quantidade=0){
 	
 } else {
 	
-	echo "Já cadastrado!";
+	// Carregar em Modal
+	$msgAtencao	= "Já cadastrado!";
+	echo $msgAtencao;
 	
 };
 ?>

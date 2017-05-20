@@ -20,10 +20,13 @@
 		
 		<?php
 		
-		include("conexao-mysql.php");
+		include("php/conexao-mysql.php");
 
 		$mysqlListagem 	="
-		SELECT id, cnpj_ou_cpf, razao_social_ou_nome, nome_fantasia_ou_sobrenome FROM fornecedores;
+		SELECT id, cnpj_ou_cpf, razao_social_ou_nome, nome_fantasia_ou_sobrenome, ceps_cidades_estados_uf,
+		cidades.nome AS cidades_nome
+		FROM fornecedores
+		JOIN cidades ON cidades.ibge = fornecedores.ceps_cidades_ibge;
 		"; 
 		# $sqlListagem
 
@@ -41,6 +44,8 @@
 				$cnpj_ou_cpf				= $rowListagem["cnpj_ou_cpf"];
 				$razao_social_ou_nome		= $rowListagem["razao_social_ou_nome"];
 				$nome_fantasia_ou_sobrenome	= $rowListagem["nome_fantasia_ou_sobrenome"];
+				$cidades_nome				= $rowListagem["cidades_nome"];
+				$ceps_cidades_estados_uf	= $rowListagem["ceps_cidades_estados_uf"];
 		
 		
 		?>
@@ -51,8 +56,8 @@
 			<td><?php echo $razao_social_ou_nome;?></td>
 			<td><?php echo $nome_fantasia_ou_sobrenome;?></td>
 			<td><?php echo $cnpj_ou_cpf;?></td>
-			<td>Brasília</td>
-			<td>DF</td>
+			<td><?php echo $cidades_nome;?></td>
+			<td><?php echo $ceps_cidades_estados_uf;?></td>
 		  </tr>
 
 		<?php
@@ -61,22 +66,13 @@
 
 		?>
 
-
 		  <tr>
-			<td>2</td>
-			<td>Mary</td>
-			<td>Moe</td>
-			<td>mary@example.com</td>
-			<td>Brasília</td>
-			<td>DF</td>
-		  </tr>
-		  <tr>
-			<td>3</td>
-			<td>July</td>
-			<td>Dooley</td>
-			<td>july@example.com</td>
-			<td>Brasília</td>
-			<td>DF</td>
+			<td>---</td>
+			<td>---</td>
+			<td>---</td>
+			<td>---</td>
+			<td>---</td>
+			<td>---</td>
 		  </tr>
 		</tbody>
 	</table>

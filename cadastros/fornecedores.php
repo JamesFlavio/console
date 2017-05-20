@@ -1,3 +1,10 @@
+<!-- 
+BUGs
+01: Criar página de visualização de informações do cadastro selecionado
+02: Criar página de edição do cadastro selecionado
+
+ -->
+
 <div class="container-fluid">
 
     <!-- Page Heading -->

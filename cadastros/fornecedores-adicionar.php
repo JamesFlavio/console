@@ -2,6 +2,17 @@
 
 <?php
 
+// BUGS
+// 01: Fazer o cadastro automaticamente após o CEP for consultado sem mostrar tela
+// 02: Ao CEP estar sendo adicionado na consulta, atualizar a impressão do Cod. IBGE na página
+// 03: Verificar as adições novidades e promoções
+// 04: Ajustar layout de exibição do Já cadastrado ou de erros para o Modal
+// 05: Correção de Charset no banco e ná página. Ex: Campo Estados
+// 06: Verificar a adição de CEP caso o mesmo não seja encontrado.
+// 07: URGENTE - CEPS não estão sendo adicionados quando a cidade é a mesma para DF
+// 08: Quando o CEP da função 7 não está sendo cadastrado, não está sendo exibido o erro
+
+
 @$cmd 						= $_GET ["cmd"];
 
 @$cnpj_ou_cpf				= $_POST ["cnpj_ou_cpf"];
@@ -11,7 +22,8 @@
 @$nome_fantasia_ou_sobrenome= $_POST ["nome_fantasia_ou_sobrenome"];
 @$apelido					= $_POST ["apelido"];
 @$cep						= $_POST ["cep"];
-@$cidade					= $_POST ["cidade"];
+@$cidade					= $_POST ["cidade"]; // ??? NÃO UTILIZADA POIS VEM DO CEP
+@$ibge						= $_POST ["ibge"];
 @$uf						= $_POST ["uf"];
 @$endereco					= $_POST ["endereco"];
 @$numero					= $_POST ["numero"];
@@ -91,40 +103,66 @@ case "adicionar":
 
 		<div class="form-group has-warning">
 			<label>Cidade</label>
-			<input type="text" name="cidade" value="<?php echo $cidade;?>" class="form-control" placeholder="Cidade">
+			<input type="text" id="cidade" name="cidade" value="<?php echo $cidade;?>" class="form-control" placeholder="Cidade">
+			<input type="hidden" id="ibge" name="ibge" value="<?php echo $ibge;?>"> <?php echo " Codigo IBGE:$ibge";?>
 		</div>
 
 		<div class="form-group has-warning">
 			<label>UF</label>
-			<select name="uf" class="form-control">
-				<option value="DF">DF - Distrito Federal</option>
-				<option value="GO">GO - Goiás</option>
+			<select id="uf" name="uf" class="form-control">
+				<option>Selecione</option>
+
+				<?php 
+
+				include("php/conexao-mysql.php");
+
+				// SELECT dos estados
+				$sqlEstados			= "SELECT uf,nome FROM estados;";
+				$queryEstados		= mysqli_query($conexaoMysql,$sqlEstados);
+				
+				while($rowsEstados	= mysqli_fetch_assoc($queryEstados)){
+					
+					$estadosUf		= $rowsEstados['uf'];
+					$estadosNome	= $rowsEstados['nome'];
+					
+					// Veirifica se algum estado será selecionado com base na variável
+					// $uf retornada do formulário
+					if($estadosUf==$uf){$selected = "selected";} else {$selected ="";}
+					
+					// Imprime os resultados
+					echo "<option id='$estadosUf' value='$estadosUf' $selected>$estadosUf - $estadosNome</option>";
+				
+				}
+				
+				?>
+				
+				<option id="GO" value="GO">GO - Goiás</option>
 			</select>
 		</div>
 
 		<div class="form-group has-warning">
 			<label>Endereço</label>
-			<input type="text" name="endereco" value="<?php echo $endereco;?>" class="form-control" placeholder="Endereço">
+			<input type="text" id="endereco" name="endereco" value="<?php echo $endereco;?>" class="form-control" placeholder="Endereço">
 		</div>
 
 		<div class="form-group has-warning">
 			<label>Número</label>
-			<input type="text" name="numero" value="<?php echo $numero;?>" class="form-control" placeholder="Número">
+			<input type="text" id="numero" name="numero" value="<?php echo $numero;?>" class="form-control" placeholder="Número">
 		</div>
 
 		<div class="form-group has-warning">
 			<label>Bairro</label>
-			<input type="text" name="bairro" value="<?php echo $bairro;?>" class="form-control" placeholder="Bairro">
+			<input type="text" id="bairro" name="bairro" value="<?php echo $bairro;?>" class="form-control" placeholder="Bairro">
 		</div>
 
 		<div class="form-group">
 			<label>Complemento</label>
-			<input type="text" name="complemento" value="<?php echo $complemento;?>" class="form-control" placeholder="Complemento">
+			<input type="text" id="complemento" name="complemento" value="<?php echo $complemento;?>" class="form-control" placeholder="Complemento">
 		</div>
 <hr>
 		<div class="form-group has-warning">
 			<label>Telefone fixo</label>
-			<input type="text" name="telefones" value="<?php echo $telefones;?>" class="form-control" placeholder="Telefone fixo">
+			<input type="text" id="telefones" name="telefones" value="<?php echo $telefones;?>" class="form-control" placeholder="Telefone fixo">
 		</div>
 		
 		<div class="form-group has-warning">
@@ -209,6 +247,7 @@ case "adicionar":
 
     </form>
 
+<br>
 </div>
 <!-- /.row -->
 
