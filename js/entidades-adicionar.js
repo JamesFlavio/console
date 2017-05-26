@@ -27,9 +27,6 @@ function consultaCep(){
 
 		$('#myModal').modal('show');
 		
-		
-		
-		//		data-toggle="modal" data-target="#myModal";
 	
 	}
 

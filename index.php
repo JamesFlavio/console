@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
 
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="James Flávio Nunes da Cruz">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -156,14 +157,14 @@
                         <a href="./"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
+                        <a href="#"><i class="fa fa-fw fa-bar-chart-o"></i> Gráficos</a>
                     </li>
                     <li>
                         <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-edit"></i> Cadastros <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
+                        <a href="javascript:;" data-toggle="collapse" data-target="#cadastros"><i class="fa fa-fw fa-edit"></i> Cadastros <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="cadastros" class="collapse">
                             <li>
                                 <a href="?console=cadastrosClientes">Clientes</a>
                             </li>
@@ -174,32 +175,20 @@
                                 <a href="?console=cadastrosTransportadoras">Transportadoras</a>
                             </li>
                             <li>
-                                <a href="#">Produtos</a>
+                                <a href="?console=cadastrosProdutosEServicos">Produtos e Serviços</a>
                             </li>
                         </ul>
 					</li>
                     <li>
-                        <a href="bootstrap-elements.html" ><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
-                    </li>
-                    <li>
-                        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
+                        <a href="javascript:;" data-toggle="collapse" data-target="#manutencoes"><i class="fa fa-fw fa-wrench"></i> Manutenções <i class="fa fa-fw fa-caret-down"></i></a>
+						<ul id="manutencoes" class="collapse">
                             <li>
-                                <a href="#">Dropdown Item</a>
-                            </li>
-                            <li>
-                                <a href="#">Dropdown Item</a>
+                                <a href="?console=manutencoesVendas">Vendas</a>
                             </li>
                         </ul>
-                    </li>
+					</li>
                     <li>
-                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
-                    </li>
-                    <li>
-                        <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
+                        <a href="#"><i class="fa fa-fw fa-desktop"></i> PDV</a>
                     </li>
                 </ul>
             </div>
@@ -228,6 +217,14 @@
 
 				case "cadastrosTransportadoras":
 					include("cadastros/transportadoras.php");
+					break;
+
+				case "cadastrosProdutosEServicos":
+					include("cadastros/produtos-e-servicos.php");
+					break;
+
+				case "manutencoesVendas":
+					include("manutencoes/vendas/vendas.php");
 					break;
 
 				default:
@@ -269,6 +266,9 @@
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
+
+    <!-- Console.js -->
+    <script src="js/console.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
