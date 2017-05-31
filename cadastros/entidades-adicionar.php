@@ -139,8 +139,6 @@ case "adicionar":
 				}
 				
 				?>
-				
-				<option id="GO" value="GO">GO - Goiás</option>
 			</select>
 		</div>
 

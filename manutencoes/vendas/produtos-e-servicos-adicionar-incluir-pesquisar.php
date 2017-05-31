@@ -1,7 +1,8 @@
 <table id="resultados" class="table-striped table-hover">
   <tr>
-	<td class="col-sm-2">Código</td>
-	<td class="col-sm-8">Nome</td>
+	<td class="col-sm-1">Código</td>
+	<td class="col-sm-2">Barras</td>
+	<td class="col-sm-7">Nome</td>
 	<td class="col-sm-2">Preço</td>
   </tr>
 	<?php
@@ -11,7 +12,7 @@
 	include("../../php/conexao-mysql.php");
 	
 	$mysqlListagem 	="
-	SELECT id,nome,precoVenda
+	SELECT id,barras,nome,precoVenda
 	FROM produtosEServicos
 	WHERE nome LIKE '%$pesquisar%'
 	ORDER BY nome,precoVenda
@@ -29,14 +30,16 @@
 
 			// Faz captura de campos
 			$id			= $rowListagem["id"];
+			$barras		= $rowListagem["barras"];
 			$nome		= $rowListagem["nome"];
 			$precoVenda	= $rowListagem["precoVenda"];
 			
 	?>
   <tr ondblclick="selecionar('<?php echo $id;?>');">
-	<td class="col-sm-2"><?php echo $id;?></td>
-	<td class="col-sm-8"><?php echo $nome;?></td>
-	<td class="col-sm-2"><?php echo $precoVenda;?></td>
+	<td class="col-sm-1"><?php echo $id;?></td>
+	<td class="col-sm-2"><?php echo $barras;?></td>
+	<td class="col-sm-7"><?php echo $nome;?></td>
+	<td class="col-sm-2"><?php echo number_format($precoVenda,2,",",".");?></td>
   </tr>
 	<?php
 	

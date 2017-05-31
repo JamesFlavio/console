@@ -23,10 +23,11 @@
 		include("php/conexao-mysql.php");
 
 		$mysqlListagem 	="
-		SELECT id, cnpj_ou_cpf, razao_social_ou_nome, nome_fantasia_ou_sobrenome, ceps_cidades_estados_uf,
-		cidades.nome AS cidades_nome
+		SELECT id, cnpj_ou_cpf, razao_social_ou_nome, nome_fantasia_ou_sobrenome, ceps_cep,
+		cidades.nome AS cidade, cidades.estados_uf AS uf
 		FROM cadastros
-		JOIN cidades ON cidades.ibge = cadastros.ceps_cidades_ibge
+		JOIN ceps
+		JOIN cidades ON cidades.ibge = ceps.cidades_ibge
 		WHERE cadastros.tipo LIKE '%$tipo%';
 		"; 
 		# $sqlListagem
@@ -45,8 +46,8 @@
 				$cnpj_ou_cpf				= $rowListagem["cnpj_ou_cpf"];
 				$razao_social_ou_nome		= $rowListagem["razao_social_ou_nome"];
 				$nome_fantasia_ou_sobrenome	= $rowListagem["nome_fantasia_ou_sobrenome"];
-				$cidades_nome				= $rowListagem["cidades_nome"];
-				$ceps_cidades_estados_uf	= $rowListagem["ceps_cidades_estados_uf"];
+				$cidade						= $rowListagem["cidade"];
+				$uf							= $rowListagem["uf"];
 		
 		
 		?>
@@ -57,8 +58,8 @@
 			<td><?php echo $razao_social_ou_nome;?></td>
 			<td><?php echo $nome_fantasia_ou_sobrenome;?></td>
 			<td><?php echo $cnpj_ou_cpf;?></td>
-			<td><?php echo $cidades_nome;?></td>
-			<td><?php echo $ceps_cidades_estados_uf;?></td>
+			<td><?php echo $cidade;?></td>
+			<td><?php echo $uf;?></td>
 		  </tr>
 
 		<?php
@@ -67,14 +68,6 @@
 
 		?>
 
-		  <tr>
-			<td>---</td>
-			<td>---</td>
-			<td>---</td>
-			<td>---</td>
-			<td>---</td>
-			<td>---</td>
-		  </tr>
 		</tbody>
 	</table>
 	

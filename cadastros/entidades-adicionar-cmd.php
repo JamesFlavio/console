@@ -68,8 +68,8 @@ if($quantidade==0){
 
 		// ??? A CIDADE NÃO FOI INCLUSA AQUI POIS VIRÁ ATRAVÉS DA SELEÇÃO DO CEP
 		$cmdcadastrosAdicionar 	="
-		INSERT INTO cadastros	(  tipo,	cnpj_ou_cpf,	  ie_ou_rg,		  im,	  razao_social_ou_nome,	  nome_fantasia_ou_sobrenome,   apelido,	 ceps_cep, ceps_cidades_ibge, ceps_cidades_estados_uf,	  endereco,   numero,   bairro,		  telefones,	ramais,	 fax,	  celular,	  responsaveis,		  sites,	novidades,	  promocoes,	 observacoes)
-		VALUES 					('$tipo', '$cnpj_ou_cpf',	'$ie_ou_rg',	'$im',	'$razao_social_ou_nome','$nome_fantasia_ou_sobrenome','$apelido',		'$cep',			  '$ibge',					 '$uf', '$endereco','$numero','$bairro',	'$telefones', '$ramais', '$fax',	'$celular', '$responsaveis',	'$sites', '$novidades', '$promocoes' , '$observacoes');
+		INSERT INTO cadastros	(  tipo,	cnpj_ou_cpf,	  ie_ou_rg,		  im,	  razao_social_ou_nome,	  nome_fantasia_ou_sobrenome,   apelido,	 ceps_cep,    endereco,   numero,   bairro,		  telefones,	ramais,	 fax,	  celular,	  responsaveis,		  sites,	novidades,	  promocoes,	 observacoes)
+		VALUES 					('$tipo', '$cnpj_ou_cpf',	'$ie_ou_rg',	'$im',	'$razao_social_ou_nome','$nome_fantasia_ou_sobrenome','$apelido',		'$cep', '$endereco','$numero','$bairro',	'$telefones', '$ramais', '$fax',	'$celular', '$responsaveis',	'$sites', '$novidades', '$promocoes' , '$observacoes');
 		"; 
 		#cmdcadastrosAdicionar
 

@@ -116,8 +116,11 @@ $cepConsultado	= $_GET['cep']; // Formato #####-### ou ####### pode variar de ac
 				// if $rowsCidades - Verifica se a cidadade já está cadastrada
 					
 					// INSERT INTO da tabela ceps
-					$sqlCadastroCeps	= " INSERT INTO ceps 	(  cep,	  bairro,	cidades_ibge,	  cidades_estados_uf)
-											VALUES				('$cep','$bairro',		  '$ibge',					'$uf');";
+					// retira o ífem do cep se houver
+					$cepCorrigido = str_replace('-','',$cep);
+					
+					$sqlCadastroCeps	= " INSERT INTO ceps 	(  cep,				bairro,	cidades_ibge)
+											VALUES				('$cepCorrigido', '$bairro',	  '$ibge');";
 					$sqlQueryCeps		= mysqli_query ($conexaoMysql,$sqlCadastroCeps)
 												or die ("Erro ao cadastrar o CEP!");
 

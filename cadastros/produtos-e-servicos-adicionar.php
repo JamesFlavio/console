@@ -13,14 +13,14 @@
 @$fabrica				= $_POST ["fabrica"];
 @$nome					= $_POST ["nome"];
 @$unidade				= $_POST ["unidade"];
-@$ncm_codigo					= $_POST ["ncm_codigo"];
+@$ncms_codigo			= $_POST ["ncms_codigo"];
 @$cest					= $_POST ["cest"];
 @$grupo					= $_POST ["grupo"];
 @$estoque				= $_POST ["estoque"];
 @$minimo				= $_POST ["minimo"];
 @$maximo				= $_POST ["maximo"];
-@$cfopEntrada_cfops_id	= $_POST ["cfopEntrada_cfops_id"];
-@$cfopSaida_cfops_id	= $_POST ["cfopSaida_cfops_id"];
+@$cfopEntrada_cfops_cfop	= $_POST ["cfopEntrada_cfops_cfop"];
+@$cfopSaida_cfops_cfop	= $_POST ["cfopSaida_cfops_cfop"];
 @$observacoes			= $_POST ["observacoes"];
 @$site					= $_POST ["site"];
 @$observacoes			= $_POST ["observacoes"];
@@ -74,7 +74,7 @@ case "adicionar":
 		
 		<div class="form-group">
 			<label>NCM</label>
-			<input type="text" name="ncm_codigo" value="<?php echo $ncm_codigo;?>" class="form-control" placeholder="NCM">
+			<input type="text" name="ncms_codigo" value="<?php echo $ncms_codigo;?>" class="form-control" placeholder="NCM">
 		</div>
 
 		<div class="form-group">
@@ -84,7 +84,7 @@ case "adicionar":
 <hr>
 		<div class="form-group has-warning">
 			<label>Grupo</label>
-			<input type="text" id="grupo" name="grupo" value="<?php echo $grupo;?>" onfocusout="consultaCep();" class="form-control" placeholder="CEP">
+			<input type="text" id="grupo" name="grupo" value="<?php echo $grupo;?>" onfocusout="consultaCep();" class="form-control" placeholder="Grupo">
 		</div>
 
 		<div class="form-group has-warning">
@@ -107,12 +107,12 @@ case "adicionar":
 		<div class="row col-lg-6">
 			<div class="form-group has-warning col-xs-6">
 				<label>CFOP de Entrada</label>
-				<input type="text" id="cfopEntrada_cfops_id" name="cfopEntrada_cfops_id" value="<?php echo $cfopEntrada_cfops_id;?>" class="form-control" placeholder="CFOP de Entrada">
+				<input type="text" id="cfopEntrada_cfops_cfop" name="cfopEntrada_cfops_cfop" value="<?php echo $cfopEntrada_cfops_cfop;?>" class="form-control" placeholder="CFOP de Entrada">
 			</div>
 
 			<div class="form-group col-xs-6">
 				<label>CFOP de Saída</label>
-				<input type="text" id="cfopSaida_cfops_id" name="cfopSaida_cfops_id" value="<?php echo $cfopSaida_cfops_id;?>" class="form-control" placeholder="CFOP de Saída">
+				<input type="text" id="cfopSaida_cfops_cfop" name="cfopSaida_cfops_cfop" value="<?php echo $cfopSaida_cfops_cfop;?>" class="form-control" placeholder="CFOP de Saída">
 			</div>
 		</div>
 		

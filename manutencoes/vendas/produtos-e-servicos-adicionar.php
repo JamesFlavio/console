@@ -131,4 +131,4 @@ case "adicionar":
 </div>
 <!-- /.row -->
 
-<script src="js/produtos-e-servicos-adicionar.js"></script>
+<script src="manutencoes/vendas/js/produtos-e-servicos-adicionar.js"></script>
