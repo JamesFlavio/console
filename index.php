@@ -203,6 +203,15 @@
 				
 				<?php
 				
+				/**
+				* @author James Flávio Nunes da Cruz
+				* @copyright 2010-2017 http://www.EmporioAutomacao.com.br
+				* @license   http://www.EmporioAutomacao.com.br
+				* @link      http://www.EmporioAutomacao.com.br
+ 				* @version	1.0.0.0
+				* @var string $console Captura o valor de console na URL para executar o include do centro.
+				*/
+				
 				@$console = $_GET ['console'];
 				
 				switch ($console) {

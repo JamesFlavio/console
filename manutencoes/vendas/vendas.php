@@ -31,11 +31,19 @@ BUGs
     <div class="row">
 	
 	<?php
-	
+	/**
+	 * @author James Flávio Nunes da Cruz
+	 * @version 1.0.0.0
+	 * @param var $console Captura o valor de 'acao' pela função GET para ver o que incluir
+	 */	
 	@$console = $_GET ['acao'];
 	
-	// Filtro para ações da página Cadastros filtrado do campo manutencoes>manutencoes.tipo
+	/**
+	 * @var int |0|1|2| Ver onde está sendo utilizada
+	 */
 	$tipo = 2;
+	
+	//Filtro para ações da página Cadastros filtrado do campo manutencoes>manutencoes.tipo
 	
 	switch ($console) {
 	case "adicionar":
