@@ -1,4 +1,9 @@
-﻿
+﻿<?php
+/**
+ * BUGS/ALTERAÇÕES
+ * 01 - Criar condição if antes de começar a listagem para ver se o resultado da pesquisa é maior que zero.
+ */
+?>
 <div class="col-lg-12">
 	
 	<div id="fornecedoresCentro">
@@ -19,16 +24,16 @@
 		<tbody>
 		
 		<?php
-		
+
 		include("php/conexao-mysql.php");
 
 		$mysqlListagem 	="
-		SELECT id, cnpj_ou_cpf, razao_social_ou_nome, nome_fantasia_ou_sobrenome, ceps_cep,
-		cidades.nome AS cidade, cidades.estados_uf AS uf
-		FROM cadastros
-		JOIN ceps
-		JOIN cidades ON cidades.ibge = ceps.cidades_ibge
-		WHERE cadastros.tipo LIKE '%$tipo%';
+		SELECT id, cnpj_ou_cpf, razao_social_ou_nome, nome_fantasia_ou_sobrenome, cep_cep,
+		cidade.nome AS cidade, cidade.estado_uf AS uf
+		FROM cadastro
+		JOIN cep
+		JOIN cidade WHERE cidade.ibge = cep.cidade_ibge
+		WHERE cadastro.tipo LIKE '%$tipo%';
 		"; 
 		# $sqlListagem
 

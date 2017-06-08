@@ -120,21 +120,21 @@ case "adicionar":
 
 				include("php/conexao-mysql.php");
 
-				// SELECT dos estados
-				$sqlEstados			= "SELECT uf,nome FROM estados;";
+				// SELECT dos estado
+				$sqlEstados			= "SELECT uf,nome FROM estado;";
 				$queryEstados		= mysqli_query($conexaoMysql,$sqlEstados);
 				
 				while($rowsEstados	= mysqli_fetch_assoc($queryEstados)){
 					
-					$estadosUf		= $rowsEstados['uf'];
-					$estadosNome	= $rowsEstados['nome'];
+					$estadoUf		= $rowsEstados['uf'];
+					$estadoNome		= $rowsEstados['nome'];
 					
 					// Veirifica se algum estado será selecionado com base na variável
 					// $uf retornada do formulário
-					if($estadosUf==$uf){$selected = "selected";} else {$selected ="";}
+					if($estadoUf==$uf){$selected = "selected";} else {$selected ="";}
 					
 					// Imprime os resultados
-					echo "<option id='$estadosUf' value='$estadosUf' $selected>$estadosUf - $estadosNome</option>";
+					echo "<option id='$estadoUf' value='$estadoUf' $selected>$estadoUf - $estadoNome</option>";
 				
 				}
 				

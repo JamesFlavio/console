@@ -1,3 +1,10 @@
+<?php
+/**
+ * BUGS/ALTERAÇÕES
+ * 01 - Criar Classe para estas funções.
+ */
+?>
+
 <script>
 
 // BUGs
@@ -58,7 +65,7 @@ $cepConsultado	= $_GET['cep']; // Formato #####-### ou ####### pode variar de ac
 
 		include("../php/conexao-mysql.php");
 
-		$sqlConsulta	= "SELECT cep FROM ceps WHERE cep='$cep'";
+		$sqlConsulta	= "SELECT cep FROM cep WHERE cep='$cep'";
 
 		$sqlResultado	= mysqli_query($conexaoMysql,$sqlConsulta);
 
@@ -100,14 +107,14 @@ $cepConsultado	= $_GET['cep']; // Formato #####-### ou ####### pode variar de ac
 			// Incluir cidade
 
 				// Verifica se a cidadade já está cadastrada
-				$sqlConsultaCidades		= "SELECT ibge FROM cidades WHERE ibge = '$ibge';";
+				$sqlConsultaCidades		= "SELECT ibge FROM cidade WHERE ibge = '$ibge';";
 				$queryConsultaCidades	= mysqli_query($conexaoMysql,$sqlConsultaCidades);
 				$rowsCidades			= mysqli_num_rows($queryConsultaCidades);
 				
 				if($rowsCidades==0){
 				
-					// INSERT INTO da tabela cidades se a cidade já não existir na base
-					$sqlCadastroCidades	= " INSERT INTO cidades (estados_uf,   nome,	 ibge)
+					// INSERT INTO da tabela cidade se a cidade já não existir na base
+					$sqlCadastroCidades	= " INSERT INTO cidade	(estado_uf,   nome,	 ibge)
 											VALUES				(	   '$uf','$cidade','$ibge');";
 					$sqlQueryCidades	= mysqli_query ($conexaoMysql,$sqlCadastroCidades)
 												or die ("Erro ao cadastrar a cidade!");
@@ -115,11 +122,11 @@ $cepConsultado	= $_GET['cep']; // Formato #####-### ou ####### pode variar de ac
 				}
 				// if $rowsCidades - Verifica se a cidadade já está cadastrada
 					
-					// INSERT INTO da tabela ceps
+					// INSERT INTO da tabela cep
 					// retira o ífem do cep se houver
 					$cepCorrigido = str_replace('-','',$cep);
 					
-					$sqlCadastroCeps	= " INSERT INTO ceps 	(  cep,				bairro,	cidades_ibge)
+					$sqlCadastroCeps	= " INSERT INTO cep 	(  cep,				bairro,	cidade_ibge)
 											VALUES				('$cepCorrigido', '$bairro',	  '$ibge');";
 					$sqlQueryCeps		= mysqli_query ($conexaoMysql,$sqlCadastroCeps)
 												or die ("Erro ao cadastrar o CEP!");
