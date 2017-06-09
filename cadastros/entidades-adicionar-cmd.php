@@ -12,15 +12,15 @@ $ibge						= $_POST ["ibge"];
 $endereco					= $_POST ["endereco"];
 $numero						= $_POST ["numero"];
 $bairro						= $_POST ["bairro"];
-$telefones					= $_POST ["telefones"];
-$ramais						= $_POST ["ramais"];
+$telefone					= $_POST ["telefone"];
+$ramal						= $_POST ["ramal"];
 $fax						= $_POST ["fax"];
 $celular					= $_POST ["celular"];
-$responsaveis				= $_POST ["responsaveis"];
-$sites						= $_POST ["sites"];
-$novidades					= $_POST ["novidades"];
-$promocoes					= $_POST ["promocoes"];
-$observacoes				= $_POST ["observacoes"];
+$responsavel				= $_POST ["responsavel"];
+$site						= $_POST ["site"];
+$novidade					= $_POST ["novidade"];
+$promocao					= $_POST ["promocao"];
+$observacao				= $_POST ["observacao"];
 
 /*
 echo "
@@ -37,15 +37,15 @@ ibge								:	$ibge						<br>
 endereco							:	$endereco					<br>
 numero								:	$numero						<br>
 bairro								:	$bairro						<br>
-telefones							:	$telefones					<br>
-ramais								:	$ramais						<br>
+telefone							:	$telefone					<br>
+ramal								:	$ramal						<br>
 fax									:	$fax						<br>
 celular								:	$celular					<br>
-responsaveis						:	$responsaveis				<br>
-sites								:	$sites						<br>
-novidades							:	$novidades					<br>
-promocoes							:	$promocoes					<br>
-observacoes							:	$observacoes				<br>
+responsavel						:	$responsavel				<br>
+site								:	$site						<br>
+novidade							:	$novidade					<br>
+promocao							:	$promocao					<br>
+observacao							:	$observacao				<br>
 ";
 */
 
@@ -53,7 +53,7 @@ observacoes							:	$observacoes				<br>
 include("php/conexao-mysql.php");
 
 # Consulta se o CNPJ ou CPF ja não consta na base de dados
-$sqlConsulta 	= "SELECT cnpj_ou_cpf FROM cadastros WHERE cnpj_ou_cpf = '$cnpj_ou_cpf';";
+$sqlConsulta 	= "SELECT cnpj_ou_cpf FROM cadastro WHERE cnpj_ou_cpf = '$cnpj_ou_cpf';";
 $queryConsulta	= mysqli_query($conexaoMysql, $sqlConsulta);
 $quantidade		= mysqli_num_rows($queryConsulta);
 
@@ -68,8 +68,8 @@ if($quantidade==0){
 
 		// ??? A CIDADE NÃO FOI INCLUSA AQUI POIS VIRÁ ATRAVÉS DA SELEÇÃO DO CEP
 		$cmdcadastrosAdicionar 	="
-		INSERT INTO cadastros	(  tipo,	cnpj_ou_cpf,	  ie_ou_rg,		  im,	  razao_social_ou_nome,	  nome_fantasia_ou_sobrenome,   apelido,	 ceps_cep,    endereco,   numero,   bairro,		  telefones,	ramais,	 fax,	  celular,	  responsaveis,		  sites,	novidades,	  promocoes,	 observacoes)
-		VALUES 					('$tipo', '$cnpj_ou_cpf',	'$ie_ou_rg',	'$im',	'$razao_social_ou_nome','$nome_fantasia_ou_sobrenome','$apelido',		'$cep', '$endereco','$numero','$bairro',	'$telefones', '$ramais', '$fax',	'$celular', '$responsaveis',	'$sites', '$novidades', '$promocoes' , '$observacoes');
+		INSERT INTO cadastro	(  tipo,	cnpj_ou_cpf,	  ie_ou_rg,		  im,	  razao_social_ou_nome,	  nome_fantasia_ou_sobrenome,   apelido,	  cep_cep,    endereco,   numero,   bairro,		  telefone,		ramal,	 fax,	  celular,	  responsavel,	 site,	novidade,	  promocao,	  observacao)
+		VALUES 					('$tipo', '$cnpj_ou_cpf',	'$ie_ou_rg',	'$im',	'$razao_social_ou_nome','$nome_fantasia_ou_sobrenome','$apelido',	'$cep',		'$endereco','$numero','$bairro',	'$telefone',  '$ramal', '$fax',	'$celular', '$responsavel','$site', '$novidade','$promocao','$observacao');
 		"; 
 		#cmdcadastrosAdicionar
 

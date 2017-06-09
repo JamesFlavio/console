@@ -1,13 +1,13 @@
-CREATE  TABLE IF NOT EXISTS emporioa_desenvolvimento.estado (
+USE emporioa_desenvolvimento;
+
+CREATE  TABLE IF NOT EXISTS estado (
   uf CHAR(2) NOT NULL,
-  nome VARCHAR(64) NOT NULL ,
+  nome VARCHAR(40) NOT NULL ,
   codigo int(7) NOT NULL ,
   PRIMARY KEY (uf) )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
-
-TRUNCATE TABLE emporioa_desenvolvimento.estado;
 
 INSERT INTO estado (nome, uf, codigo) VALUES ('Acre', 'AC', '12');
 INSERT INTO estado (nome, uf, codigo) VALUES ('Alagoas', 'AL', '27');
