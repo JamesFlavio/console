@@ -5,7 +5,7 @@
 // BUGS
 // 01: Fazer o cadastro automaticamente após o CEP for consultado sem mostrar tela
 // 02: Ao CEP estar sendo adicionado na consulta, atualizar a impressão do Cod. IBGE na página
-// 03: Verificar as adições novidades e promoções
+// 03: Verificar as adições novidade e promoções
 // 04: Ajustar layout de exibição do Já cadastrado ou de erros para o Modal
 // 05: Correção de Charset no banco e ná página. Ex: Campo Estados
 // 06: Verificar a adição de CEP caso o mesmo não seja encontrado.
@@ -33,16 +33,16 @@
 @$numero					= $_POST ["numero"];
 @$bairro					= $_POST ["bairro"];
 @$complemento				= $_POST ["complemento"];
-@$telefones					= $_POST ["telefones"];
-@$ramais					= $_POST ["ramais"];
+@$telefone					= $_POST ["telefone"];
+@$ramal						= $_POST ["ramal"];
 @$fax						= $_POST ["fax"];
 @$celular					= $_POST ["celular"];
-@$responsaveis				= $_POST ["responsaveis"];
-@$emails					= $_POST ["emails"];
-@$sites						= $_POST ["sites"];
-@$novidades					= $_POST ["novidades"];
-@$promocoes					= $_POST ["promocoes"];
-@$observacoes				= $_POST ["observacoes"];
+@$responsavel				= $_POST ["responsavel"];
+@$email						= $_POST ["email"];
+@$site						= $_POST ["site"];
+@$novidade					= $_POST ["novidade"];
+@$promocao					= $_POST ["promocao"];
+@$observacao				= $_POST ["observacao"];
 
 switch ($cmd) {
 case "adicionar":
@@ -164,12 +164,12 @@ case "adicionar":
 <hr>
 		<div class="form-group has-warning">
 			<label>Telefone fixo</label>
-			<input type="text" id="telefones" name="telefones" value="<?php echo $telefones;?>" class="form-control" placeholder="Telefone fixo">
+			<input type="text" id="telefone" name="telefone" value="<?php echo $telefone;?>" class="form-control" placeholder="Telefone fixo">
 		</div>
 		
 		<div class="form-group has-warning">
 			<label>Ramais</label>
-			<input type="text" name="ramais" value="<?php echo $ramais;?>" class="form-control" placeholder="Ramais">
+			<input type="text" name="ramal" value="<?php echo $ramal;?>" class="form-control" placeholder="Ramais">
 		</div>
 		
 		<div class="form-group">
@@ -191,17 +191,17 @@ case "adicionar":
 
 		<div class="form-group">
 			<label>Responsáveis</label>
-			<input type="text" name="responsaveis" value="<?php echo $responsaveis;?>" class="form-control" placeholder="Responsáveis">
+			<input type="text" name="responsavel" value="<?php echo $responsavel;?>" class="form-control" placeholder="Responsáveis">
 		</div>
 
 		<div class="form-group input-group has-warning">
 			<span class="input-group-addon">@</span>
-			<input type="text" name="email" value="<?php echo $emails;?>" class="form-control" placeholder="E-mail">
+			<input type="text" name="email" value="<?php echo $email;?>" class="form-control" placeholder="E-mail">
 		</div>
 
 		<div class="form-group">
 			<label>Sites</label>
-			<input type="text" name="sites" value="<?php echo $sites;?>" class="form-control" placeholder="Sites">
+			<input type="text" name="site" value="<?php echo $site;?>" class="form-control" placeholder="Sites">
 		</div>
 
 		<div class="form-group">
@@ -228,19 +228,19 @@ case "adicionar":
 
         <div class="form-group">
             <label>Observações</label>
-            <textarea name="observacoes" value="<?php echo $observacoes;?>" class="form-control" rows="3"></textarea>
+            <textarea name="observacao" value="<?php echo $observacao;?>" class="form-control" rows="3"></textarea>
         </div>
 
         <div class="form-group">
             <label>Assinaturas</label>
             <div class="checkbox">
                 <label>
-                    <input name="novidades" type="checkbox" value="ATIVO" checked="checked">Novidades
+                    <input name="novidade" type="checkbox" value="ATIVO" checked="checked">Novidades
                 </label>
             </div>
             <div class="checkbox">
                 <label>
-                    <input name="promocoes" type="checkbox" value="ATIVO" checked="checked">Promoções
+                    <input name="promocao" type="checkbox" value="ATIVO" checked="checked">Promoções
                 </label>
             </div>
         </div>

@@ -24,30 +24,24 @@ BUGS
 		
 		<?php
 		
-		include("php/conexao-mysql.php");
-
-		$mysqlListagem 	="
-		SELECT id,fabrica,barras,nome,estoque,precoVenda
-		FROM produtosEServicos
-		"; 
-		# $sqlListagem
-
-		$queryListagem = mysqli_query($conexaoMysql, $mysqlListagem);
-
-		if(!$queryListagem){
-			echo "Erro: queryListagem!";
-		};
+		require_once("class/BancoMysql.php");
+		
+		$bd = new BancoMysql();
+		$bd->setSelect("	SELECT id,fabrica,barra,nome,estoque,preco_venda
+							FROM produto;
+		");
+		
 
 		// output data of each row
-		while($rowListagem = mysqli_fetch_assoc($queryListagem)) {
+		while($rows = $bd->getSelect()) {
 
 				// Faz captura de campos
-				$id		= $rowListagem["id"];
-				$fabrica	= $rowListagem["fabrica"];
-				$barras		= $rowListagem["barras"];
-				$nome		= $rowListagem["nome"];
-				$estoque	= $rowListagem["estoque"];
-				$precoVenda	= $rowListagem["precoVenda"];
+				$id			= $rows["id"];
+				$fabrica	= $rows["fabrica"];
+				$barra		= $rows["barra"];
+				$nome		= $rows["nome"];
+				$estoque	= $rows["estoque"];
+				$preco_venda= $rows["preco_venda"];
 		
 		
 		?>
@@ -55,11 +49,11 @@ BUGS
 		
 		  <tr>
 			<td><?php echo $id;?></td>
-			<td><?php echo $barras;?></td>
+			<td><?php echo $barra;?></td>
 			<td><?php echo $fabrica;?></td>
 			<td><?php echo $nome;?></td>
 			<td><?php echo number_format($estoque,0,',','.');?></td>
-			<td><?php echo number_format($precoVenda,2,',','.');?></td>
+			<td><?php echo number_format($preco_venda,2,',','.');?></td>
 		  </tr>
 
 		<?php

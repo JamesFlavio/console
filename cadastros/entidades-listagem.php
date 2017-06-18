@@ -32,7 +32,7 @@
 		cidade.nome AS cidade, cidade.estado_uf AS uf
 		FROM cadastro
 		JOIN cep
-		JOIN cidade WHERE cidade.ibge = cep.cidade_ibge
+		JOIN cidade ON cidade.ibge = cep.cidade_ibge
 		WHERE cadastro.tipo LIKE '%$tipo%';
 		"; 
 		# $sqlListagem

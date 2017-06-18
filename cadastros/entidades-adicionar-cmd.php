@@ -6,7 +6,7 @@ $im							= $_POST ["im"];
 $razao_social_ou_nome		= $_POST ["razao_social_ou_nome"];
 $nome_fantasia_ou_sobrenome	= $_POST ["nome_fantasia_ou_sobrenome"];
 $apelido					= $_POST ["apelido"];
-$cep						= $_POST ["cep"];
+$cep						= str_ireplace("-","",$_POST ["cep"]); // CEP no formato ########
 $cidade						= $_POST ["cidade"]; // ??? NÃO UTILIZADO POIS VEM DO CEP
 $ibge						= $_POST ["ibge"];
 $endereco					= $_POST ["endereco"];
@@ -20,34 +20,9 @@ $responsavel				= $_POST ["responsavel"];
 $site						= $_POST ["site"];
 $novidade					= $_POST ["novidade"];
 $promocao					= $_POST ["promocao"];
-$observacao				= $_POST ["observacao"];
+$observacao					= $_POST ["observacao"];
 
-/*
-echo "
-cnpj_ou_cpf							:	$cnpj_ou_cpf				<br>
-ie_ou_rg							:	$ie_ou_rg					<br>
-im									:	$im							<br>
-razao_social_ou_nome				:	$razao_social_ou_nome		<br>
-nome_fantasia_ou_sobrenome			:	$nome_fantasia_ou_sobrenome	<br>
-apelido								:	$apelido					<br>
-cep									:	$cep						<br>
-cidade								:	$cidade						<br>
-uf									:	$uf							<br>
-ibge								:	$ibge						<br>
-endereco							:	$endereco					<br>
-numero								:	$numero						<br>
-bairro								:	$bairro						<br>
-telefone							:	$telefone					<br>
-ramal								:	$ramal						<br>
-fax									:	$fax						<br>
-celular								:	$celular					<br>
-responsavel						:	$responsavel				<br>
-site								:	$site						<br>
-novidade							:	$novidade					<br>
-promocao							:	$promocao					<br>
-observacao							:	$observacao				<br>
-";
-*/
+
 
 
 include("php/conexao-mysql.php");
@@ -68,7 +43,7 @@ if($quantidade==0){
 
 		// ??? A CIDADE NÃO FOI INCLUSA AQUI POIS VIRÁ ATRAVÉS DA SELEÇÃO DO CEP
 		$cmdcadastrosAdicionar 	="
-		INSERT INTO cadastro	(  tipo,	cnpj_ou_cpf,	  ie_ou_rg,		  im,	  razao_social_ou_nome,	  nome_fantasia_ou_sobrenome,   apelido,	  cep_cep,    endereco,   numero,   bairro,		  telefone,		ramal,	 fax,	  celular,	  responsavel,	 site,	novidade,	  promocao,	  observacao)
+		INSERT INTO cadastro	(  tipo,	cnpj_ou_cpf,	  ie_ou_rg,		  im,	  razao_social_ou_nome,	  nome_fantasia_ou_sobrenome,   apelido,	  cep_cep,    endereco,   numero,   bairro,		  telefone,		ramal,	 fax,	  celular,	  responsavel,	 site,	  novidade,	  promocao,	  observacao)
 		VALUES 					('$tipo', '$cnpj_ou_cpf',	'$ie_ou_rg',	'$im',	'$razao_social_ou_nome','$nome_fantasia_ou_sobrenome','$apelido',	'$cep',		'$endereco','$numero','$bairro',	'$telefone',  '$ramal', '$fax',	'$celular', '$responsavel','$site', '$novidade','$promocao','$observacao');
 		"; 
 		#cmdcadastrosAdicionar

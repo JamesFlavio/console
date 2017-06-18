@@ -74,28 +74,24 @@ BUGS
 		
 		<?php
 		
-		include("php/conexao-mysql.php");
+		require_once("class/BancoMysql.php");
 
-		$mysqlListagem 	="
-		SELECT vendas.id, vendas.cadastros_id, cadastros.razao_social_ou_nome, vendas.data
-		FROM vendas
-		JOIN cadastros ON cadastros.id = vendas.cadastros_id
-		;"; 
-		# $sqlListagem
+		$bd = new BancoMysql();
+		$bd->setSelect("
+			SELECT vendas.id, vendas.cadastros_id, cadastros.razao_social_ou_nome, vendas.data
+			FROM vendas
+			JOIN cadastros ON cadastros.id = vendas.cadastros_id;
+		");
+		$rows	= $bd->getSelect();
 
-		$queryListagem = mysqli_query($conexaoMysql, $mysqlListagem);
-
-		if(!$queryListagem){
-			echo "Erro: queryListagem!";
-		};
 
 		// output data of each row
-		while($rowListagem = mysqli_fetch_assoc($queryListagem)) {
+		while($rows	= $bd->getSelect()) {
 
 				// Faz captura de campos
-				$id						= $rowListagem["id"];
-				$razao_social_ou_nome	= $rowListagem["razao_social_ou_nome"];
-				$data					= $rowListagem["data"];
+				$id						= $rows["id"];
+				$razao_social_ou_nome	= $rows["razao_social_ou_nome"];
+				$data					= $rows["data"];
 		
 		
 		?>

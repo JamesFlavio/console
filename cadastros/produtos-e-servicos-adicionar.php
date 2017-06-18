@@ -6,24 +6,26 @@
 // 01:  
 
 
-@$cmd 			= $_GET ["cmd"];
+@$cmd 					= $_GET ["cmd"];
 
 @$tipo					= $_POST ["tipo"];
-@$barras				= $_POST ["barras"];
+@$barra					= $_POST ["barra"];
 @$fabrica				= $_POST ["fabrica"];
 @$nome					= $_POST ["nome"];
 @$unidade				= $_POST ["unidade"];
-@$ncms_codigo			= $_POST ["ncms_codigo"];
+@$ncm_ncm				= $_POST ["ncm_ncm"];
 @$cest					= $_POST ["cest"];
 @$grupo					= $_POST ["grupo"];
 @$estoque				= $_POST ["estoque"];
 @$minimo				= $_POST ["minimo"];
 @$maximo				= $_POST ["maximo"];
-@$cfopEntrada_cfops_cfop	= $_POST ["cfopEntrada_cfops_cfop"];
-@$cfopSaida_cfops_cfop	= $_POST ["cfopSaida_cfops_cfop"];
-@$observacoes			= $_POST ["observacoes"];
+@$cfop_entrada_cfop_cfop= $_POST ["cfop_entrada_cfop_cfop"];
+@$cfop_saida_cfop_cfop	= $_POST ["cfop_saida_cfop_cfop"];
+@$preco_custo			= $_POST ["preco_custo"];
+@$preco_venda			= $_POST ["preco_venda"];
+@$preco_minimo			= $_POST ["preco_minimo"];
+@$observacao			= $_POST ["observacao"];
 @$site					= $_POST ["site"];
-@$observacoes			= $_POST ["observacoes"];
 
 
 switch ($cmd) {
@@ -54,11 +56,11 @@ case "adicionar":
 	
 		<div class="form-group has-warning">
 			<label>Cod. de Barras</label>
-			<input type="text" name="barras" value="<?php echo $barras;?>" class="form-control" placeholder="Cód. de Barras">
+			<input type="text" name="barra" value="<?php echo $barra;?>" class="form-control" placeholder="Cód. de Barras">
 		</div>
 		
 		<div class="form-group has-warning">
-			<label for="barras">Cod. de Fábrica</label>
+			<label for="barra">Cod. de Fábrica</label>
 			<input type="text" name="fabrica" value="<?php echo $fabrica;?>" class="form-control" placeholder="Codigo de Fábrica">
 		</div>
 		
@@ -74,7 +76,7 @@ case "adicionar":
 		
 		<div class="form-group">
 			<label>NCM</label>
-			<input type="text" name="ncms_codigo" value="<?php echo $ncms_codigo;?>" class="form-control" placeholder="NCM">
+			<input type="text" name="ncm_ncm" value="<?php echo $ncm_ncm;?>" class="form-control" placeholder="NCM">
 		</div>
 
 		<div class="form-group">
@@ -107,18 +109,33 @@ case "adicionar":
 		<div class="row col-lg-6">
 			<div class="form-group has-warning col-xs-6">
 				<label>CFOP de Entrada</label>
-				<input type="text" id="cfopEntrada_cfops_cfop" name="cfopEntrada_cfops_cfop" value="<?php echo $cfopEntrada_cfops_cfop;?>" class="form-control" placeholder="CFOP de Entrada">
+				<input type="text" id="cfop_entrada_cfop_cfop" name="cfop_entrada_cfop_cfop" value="<?php echo $cfop_entrada_cfop_cfop;?>" class="form-control" placeholder="CFOP de Entrada">
 			</div>
 
 			<div class="form-group col-xs-6">
 				<label>CFOP de Saída</label>
-				<input type="text" id="cfopSaida_cfops_cfop" name="cfopSaida_cfops_cfop" value="<?php echo $cfopSaida_cfops_cfop;?>" class="form-control" placeholder="CFOP de Saída">
+				<input type="text" id="cfop_saida_cfop_cfop" name="cfop_saida_cfop_cfop" value="<?php echo $cfop_saida_cfop_cfop;?>" class="form-control" placeholder="CFOP de Saída">
 			</div>
 		</div>
 		
 		<div class="form-group has-warning col-xs-12">
+			<label>Preço de custo</label>
+			<input type="text" name="preco_custo" value="<?php echo $preco_custo;?>" class="form-control" placeholder="Preço custo">
+		</div>
+
+		<div class="form-group has-warning col-xs-12">
+			<label>Preço de venda</label>
+			<input type="text" name="preco_venda" value="<?php echo $preco_venda;?>" class="form-control" placeholder="Preço venda">
+		</div>
+
+		<div class="form-group has-warning col-xs-12">
+			<label>Preço míximo</label>
+			<input type="text" name="preco_minimo" value="<?php echo $preco_minimo;?>" class="form-control" placeholder="Preço mínimo">
+		</div>
+
+		<div class="form-group has-warning col-xs-12">
 			<label>Observações</label>
-			<input type="text" name="observacoes" value="<?php echo $observacoes;?>" class="form-control" placeholder="Observações">
+			<input type="text" name="observacao" value="<?php echo $observacao;?>" class="form-control" placeholder="Observações">
 		</div>
 		
         <div class="form-group">

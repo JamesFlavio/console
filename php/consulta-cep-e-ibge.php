@@ -65,7 +65,7 @@ $cepConsultado	= $_GET['cep']; // Formato #####-### ou ####### pode variar de ac
 
 		include("../php/conexao-mysql.php");
 
-		$sqlConsulta	= "SELECT cep FROM cep WHERE cep='$cep'";
+		$sqlConsulta	= "SELECT cep FROM cep WHERE cep='".str_replace('-','',$cep)."'";
 
 		$sqlResultado	= mysqli_query($conexaoMysql,$sqlConsulta);
 

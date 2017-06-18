@@ -1,59 +1,47 @@
 <?php
 
-$barras					= $_POST ["barras"];
+$barra					= $_POST ["barra"];
 $fabrica				= $_POST ["fabrica"];
 $nome					= $_POST ["nome"];
 $unidade				= $_POST ["unidade"];
-$ncms_codigo			= $_POST ["ncms_codigo"];
+$ncm_ncm				= $_POST ["ncm_ncm"];
 $cest					= $_POST ["cest"];
 $grupo					= $_POST ["grupo"];
 $estoque				= $_POST ["estoque"];
 $minimo					= $_POST ["minimo"];
 $maximo					= $_POST ["maximo"];
-$cfopEntrada_cfops_cfop	= $_POST ["cfopEntrada_cfops_cfop"];
-$cfopSaida_cfops_cfop	= $_POST ["cfopSaida_cfops_cfop"];
-$observacoes			= $_POST ["observacoes"];
+$cfop_entrada_cfop_cfop	= $_POST ["cfop_entrada_cfop_cfop"];
+$cfop_saida_cfop_cfop	= $_POST ["cfop_saida_cfop_cfop"];
+$observacao				= $_POST ["observacao"];
 $site					= $_POST ["site"];
-$observacoes			= $_POST ["observacoes"];
 
 
-include("php/conexao-mysql.php");
+	require_once("class/BancoMysql.php");
 
-# Consulta se o Codigo de Barras ja não consta na base de dados
-$sqlConsulta 	= "SELECT barras FROM produtosEServicos WHERE barras = '$barras';";
-$queryConsulta	= mysqli_query($conexaoMysql, $sqlConsulta);
-$quantidade		= mysqli_num_rows($queryConsulta);
-
-if(!$queryConsulta){ # Verifica se a consulta não deu erro
-	echo "Erro: queryConsulta! ".mysqli_error($queryConsulta);
-};
-
-if($quantidade==0 or $barras == ""){
-
-	if($nome != ""){
-
-		// ??? A CIDADE NÃO FOI INCLUSA AQUI POIS VIRÁ ATRAVÉS DA SELEÇÃO DO CEP
-		$cmdprodutosAdicionar 	="
-		INSERT INTO produtosEServicos	(  tipo,	barras,	  fabrica,	  nome,	  unidade,   ncms_codigo,	  cfopEntrada_cfops_cfop,   cfopSaida_cfops_cfop,   cest,	  grupo,	estoque,	minimo,		maximo,       observacoes)
-		VALUES 							('$tipo', '$barras','$fabrica',	'$nome','$unidade','$ncms_codigo',	'$cfopEntrada_cfops_cfop','$cfopSaida_cfops_cfop','$cest',	'$grupo', '$estoque', '$minimo',  '$maximo','$observacoes');
-		"; 
-		#cmdprodutosAdicionar
-
-		$query = mysqli_query($conexaoMysql, $cmdprodutosAdicionar);
-
-		if(!$query){
-			echo "Erro!";
-		} else {
-			echo "Cadastro realizado com sucesso!";
-		};
-
-	};
+	# Consulta se o Codigo de Barras ja não consta na base de dados
+	$bd		= new BancoMysql();
+		
+	$dados	= [	
+				"id"					=> "null",
+				"tipo"					=> "$tipo",
+				"fabrica"				=> "$fabrica",
+				"barra"					=> "$barra",
+				"nome"					=> "$nome",
+				"unidade"				=> "$unidade",
+				"ncm_ncm"				=> "$ncm_ncm",
+				"cest"					=> "$cest",
+				"grupo"					=> "$grupo",
+				"cfop_entrada_cfop_cfop"=> "$cfop_entrada_cfop_cfop",
+				"cfop_saida_cfop_cfop"	=> "$cfop_saida_cfop_cfop",
+				"estoque"				=> "$estoque",
+				"minimo"				=> "$minimo",
+				"maximo"				=> "$maximo",
+				"preco_custo"			=> "$preco_custo",
+				"preco_venda"			=> "$preco_venda",
+				"preco_minimo"			=> "$preco_minimo",
+				"observacao"			=> "$observacao"
+	];
 	
-} else {
-	
-	// Carregar em Modal
-	$msgAtencao	= "Já cadastrado!";
-	echo $msgAtencao;
-	
-};
+	$bd->setInsert("produto",$dados);
+
 ?>
