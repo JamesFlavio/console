@@ -27,39 +27,33 @@
 		
 		$id = $_GET['selecionar'];
 		
-		include("../../php/conexao-mysql.php");
+		include("../../class/BancoMysql.php");
 		
-		$mysqlListagem 	="
-		SELECT id,barras,nome,precoVenda
-		FROM produtosEServicos
-		WHERE id='$id'
-		ORDER BY nome,precoVenda
-		;"; 
-		# $sqlListagem
-	
-		$queryListagem = mysqli_query($conexaoMysql, $mysqlListagem);
-	
-		if(!$queryListagem){
-			echo "Erro: queryListagem!";
-		};
-	
+		$bd = new BancoMysql();
+		$bd->setSelect("
+			SELECT id,barra,nome,preco_venda
+			FROM produto
+			WHERE id='$id'
+			ORDER BY nome,preco_venda
+		;");
+		
 		// output data of each row
-		while($rowListagem = mysqli_fetch_assoc($queryListagem)) {
+		while($rows = $bd->getSelect()) {
 	
 				// Faz captura de campos
-				$id			= $rowListagem["id"];
-				$barras		= $rowListagem["barras"];
-				$nome		= $rowListagem["nome"];
-				$precoVenda	= $rowListagem["precoVenda"];
+				$id			= $rows["id"];
+				$barra		= $rows["barra"];
+				$nome		= $rows["nome"];
+				$preco_venda= $rows["preco_venda"];
 				
 		?>
 	<tr>
 		<td class="text-center"><input type="hidden" id="id" value="<?php echo $id;?>"><?php echo $id;?></td>
-		<td class="col-sm-1"><?php echo $barras;?></td>
+		<td class="col-sm-1"><?php echo $barra;?></td>
 		<td class="col-sm-8"><?php echo $nome;?></td>
-		<td class="col-sm-1"><input id="valorUnitario" type="text" size="4" value="<?php echo number_format($precoVenda,2,',','');?>"></td>
+		<td class="col-sm-1"><input id="valor_unitario" type="text" size="4" value="<?php echo number_format($preco_venda,2,',','');?>"></td>
 		<td class="col-sm-1"><input id="quantidade" type="text" size="4"></td>
-		<td class="col-sm-1"><input id="valorTotal" type="text" size="4" value="<?php echo number_format("0",2,',','');?>"></td>
+		<td class="col-sm-1"><input id="valor_total" type="text" size="4" value="<?php echo number_format("0",2,',','');?>"></td>
 	</tr>
 		<?php
 		
@@ -92,8 +86,5 @@
 	<button class="btn btn-default" type="button" onclick="acaoAdicionar();">
 		<i class="glyphicon glyphicon-plus"> Incluir</i>
 	</button>
-
-	<div id="divAcao">divAcao
-	</div>
 	
 </form>

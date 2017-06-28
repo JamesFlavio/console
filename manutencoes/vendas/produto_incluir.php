@@ -6,14 +6,14 @@ function pesquisar(){
 	var pesquisar = document.getElementById("inputPesquisar").value;	
 
 	//imprime o select retornado na div resultados
-	$('#divPesquisar').load("manutencoes/vendas/produtos-e-servicos-adicionar-incluir-pesquisar.php?pesquisar="+pesquisar);
+	$('#divPesquisar').load("manutencoes/vendas/produto_pesquisar.php?pesquisar="+pesquisar);
 	
 }
 
 function selecionar(id){
 
 	//imprime o select retornado na div resultados
-	$('#divPesquisar').load("manutencoes/vendas/produtos-e-servicos-adicionar-incluir-pesquisar-selecionar.php?selecionar="+id);
+	$('#divPesquisar').load("manutencoes/vendas/produto_pesquisar_selecionar.php?selecionar="+id);
 	
 }
 

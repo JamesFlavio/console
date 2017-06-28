@@ -38,7 +38,7 @@ class BancoMysql {
 	protected	function setConecta(){
 		$this->conexao = mysqli_connect($this->host,$this->usuario,$this->senha,$this->banco);
 		if(!$this->conexao){
-			die ("<pre>Erro na conexão!<?pre>");
+			die ("<pre>Erro na conexão!</pre>");
 		}
 	}
 	
@@ -59,7 +59,7 @@ class BancoMysql {
 	public		function setSelect($select){
 		$this->select = mysqli_query($this->conexao,$select);
 		if(!$this->select){
-			die ("<pre>Erro no query!<?pre>");
+			die ("<pre>Erro no query!</pre>");
 		}
 	}
 	
@@ -90,6 +90,8 @@ class BancoMysql {
 		}
 		
 		$this->insert = mysqli_query($this->conexao,"INSERT INTO ".$tabela." (".implode(",",$campo).") VALUES ('".implode("','",$valores)."')");
+		
+		// echo "<br>INSERT INTO ".$tabela." (".implode(",",$campo).") VALUES ('".implode("','",$valores)."')";
 
 		if(!$this->insert){
 			die("<pre>Erro no insert!</pre>");

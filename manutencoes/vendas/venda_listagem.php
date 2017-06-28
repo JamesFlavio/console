@@ -78,12 +78,10 @@ BUGS
 
 		$bd = new BancoMysql();
 		$bd->setSelect("
-			SELECT vendas.id, vendas.cadastros_id, cadastros.razao_social_ou_nome, vendas.data
-			FROM vendas
-			JOIN cadastros ON cadastros.id = vendas.cadastros_id;
+			SELECT venda.id, venda.cadastro_id, cadastro.razao_social_ou_nome, venda.data
+			FROM venda
+			JOIN cadastro ON cadastro.id = venda.cadastro_id;
 		");
-		$rows	= $bd->getSelect();
-
 
 		// output data of each row
 		while($rows	= $bd->getSelect()) {
@@ -109,13 +107,6 @@ BUGS
 		};
 
 		?>
-
-		  <tr>
-			<td>---</td>
-			<td>---</td>
-			<td>---</td>
-			<td>---</td>
-		  </tr>
 		</tbody>
 	</table>
 	

@@ -47,13 +47,13 @@ BUGs
 	
 	switch ($console) {
 	case "adicionar":
-		include("manutencoes/vendas/produtos-e-servicos-adicionar.php");
+		include("manutencoes/vendas/produto_adicionar.php");
 		break;
 	case "adicionarCabecalho":
-		include("manutencoes/vendas/produtos-e-servicos-adicionar-cabecalho.php");
+		include("manutencoes/vendas/venda_cabecalho.php");
 		break;
 	default:
-		include("manutencoes/vendas/vendas-listagem.php");
+		include("manutencoes/vendas/venda_listagem.php");
 	
 	}
 	?>

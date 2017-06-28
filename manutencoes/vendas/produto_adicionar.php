@@ -4,7 +4,7 @@
 
 // BUGS
 // 01:  
-
+		
 
 @$cmd 			= $_GET ["cmd"];
 @$id			= $_POST ["id"];
@@ -20,27 +20,46 @@ case "adicionar":
 <div class="form-group ">
 	Cliente
 		<?php 
-		include("php/conexao-mysql.php");
 
-		// SELECT dos estados
-		$sqlEstados			= "	SELECT id, razao_social_ou_nome
-								FROM cadastros
-								WHERE id = '$id';";
-								
-		$queryEstados		= mysqli_query($conexaoMysql,$sqlEstados);
+		/**
+		 * Faz o insert no banco de uma nova venda ao cliente selecionado
+		 */
+		 $_SESSION['venda']=[
+			"cadastro_id"	=> "$id",
+			"data"			=> date("Y-m-d H:i:s")
+		 ];
+		 
+		 var_dump($_SESSION['venda']);
+		 
+		 echo $_SESSION['venda']['cadastro_id']." AQUI";
+
+		// SELECT
 		
+		include("class/BancoMysql.php");
+	
+		$bd	= new BancoMysql();
+		$bd->setSelect("SELECT id, razao_social_ou_nome FROM cadastro WHERE id = '".$_SESSION['venda']['cadastro_id']."';");
 		
-		$rowsEstados	= mysqli_fetch_assoc($queryEstados);
+		$rows	= $bd->getSelect();
 			
-			$id						= $rowsEstados['id'];
-			$razao_social_ou_nome	= $rowsEstados['razao_social_ou_nome'];
+			$id						= $rows['id'];
+			$razao_social_ou_nome	= $rows['razao_social_ou_nome'];
+				
 		
-		// Imprime os resultados
-			echo "$id: $razao_social_ou_nome";
+		/**
+		 * Imprime resultados
+		 */
+		 echo "$id: $razao_social_ou_nome";
 		
+		
+		$_SESSION['venda_cliente']="$id";
+		
+		 
+		 //$bd->setInsert("venda",$dados);
+		 
 		?>
 </div>
-	<button class="btn btn-default" type="button" onclick="linkModal('manutencoes/vendas/produtos-e-servicos-adicionar-incluir.php');">
+	<button class="btn btn-default" type="button" onclick="linkModal('manutencoes/vendas/produto_incluir.php');">
 		<i class="glyphicon glyphicon-ok"> Incluir</i>
 	</button>
 
@@ -74,31 +93,25 @@ case "adicionar":
 		
 		<?php
 		
-		include("php/conexao-mysql.php");
+		$bdproduto = new BancoMysql();
+		$bdproduto->setSelect("
+			SELECT venda_item.produto_id, produto.nome, venda_item.quantidade, venda_item.valor_unitario
+			FROM venda_item
+			JOIN produto
+			ON produto.id = venda_item.produto_id
+			WHERE venda_id = '1'
+		;");
+		
 
-		$mysqlListagem 	="
-		SELECT vendasItens.produtosEServicos_id, produtosEServicos.nome, vendasItens.quantidade, vendasItens.preco
-		FROM vendasItens
-		JOIN produtosEServicos
-		ON produtosEServicos.id = vendasItens.produtosEServicos_id
-		WHERE vendas_id = '1'
-		;"; 
-		# $sqlListagem
-
-		$queryListagem = mysqli_query($conexaoMysql, $mysqlListagem);
-
-		if(!$queryListagem){
-			echo "Erro: queryListagem!";
-		};
 
 		// output data of each row
-		while($rowListagem = mysqli_fetch_assoc($queryListagem)) {
+		while($rowproduto = $bdproduto->getSelect()) {
 
 				// Faz captura de campos
-				$produtosEServicos_id	= $rowListagem["produtosEServicos_id"];
-				$nome					= $rowListagem["nome"];
-				$quantidade				= $rowListagem["quantidade"];
-				$preco					= $rowListagem["preco"];
+				$produto_id	= $rowproduto["produto_id"];
+				$nome					= $rowproduto["nome"];
+				$quantidade				= $rowproduto["quantidade"];
+				$valor_unitario			= $rowproduto["valor_unitario"];
 		
 		
 		?>
@@ -118,12 +131,6 @@ case "adicionar":
 
 		?>
 
-		  <tr>
-			<td>---</td>
-			<td>---</td>
-			<td>---</td>
-			<td>---</td>
-		  </tr>
 		</tbody>
 	</table>
 

@@ -8,12 +8,6 @@
 
 @$cmd 			= $_GET ["cmd"];
 
-switch ($cmd) {
-case "adicionar":
-	include("cadastros/produtos-e-servicos-adicionar-cmd.php");
-	break;
-};	
-
 ?>
 
 <form method="post" action="?console=manutencoesVendas&acao=adicionar">
@@ -24,17 +18,15 @@ case "adicionar":
 		
 			<?php 
 	
-			include("php/conexao-mysql.php");
+			include("class/BancoMysql.php");
 	
-			// SELECT dos estados
-			$sqlEstados			= "SELECT id,razao_social_ou_nome FROM cadastros WHERE tipo LIKE '%0%';";
-			$queryEstados		= mysqli_query($conexaoMysql,$sqlEstados);
+			$bd	= new BancoMysql();
+			$bd->setSelect("SELECT id,razao_social_ou_nome FROM cadastro WHERE tipo LIKE '%0%';");
 			
-			
-			while($rowsEstados	= mysqli_fetch_assoc($queryEstados)){
+			while($rows	= $bd->getSelect()){
 				
-				$id						= $rowsEstados['id'];
-				$razao_social_ou_nome	= $rowsEstados['razao_social_ou_nome'];
+				$id						= $rows['id'];
+				$razao_social_ou_nome	= $rows['razao_social_ou_nome'];
 				
 			
 				// Imprime os resultados
