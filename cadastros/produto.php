@@ -18,7 +18,7 @@ BUGs
                     <i class="fa fa-dashboard"></i> <a href="./">Dashboard</a>
                 </li>
                 <li class="active">
-                    <i class="fa fa-edit"></i> <a href="?console=cadastrosProdutosEServicos">Produtos e Serviços</a>
+                    <i class="fa fa-edit"></i> <a href="?console=cadastroProduto">Produtos e Serviços</a>
                 </li>
             </ol>
         </div>
@@ -81,10 +81,10 @@ BUGs
 	
 	switch ($console) {
 	case "adicionar":
-		include("cadastros/produtos-e-servicos-adicionar.php");
+		include("cadastros/produto-adiciona.php");
 		break;
 	default:
-		include("cadastros/produtos-e-servicos-listagem.php");
+		include("cadastros/produto-listagem.php");
 	
 	}
 	?>

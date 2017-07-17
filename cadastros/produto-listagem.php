@@ -51,7 +51,7 @@ BUGS
 			<td><?php echo $id;?></td>
 			<td><?php echo $barra;?></td>
 			<td><?php echo $fabrica;?></td>
-			<td><?php echo $nome;?></td>
+			<td><?php echo "<a href='".$_SERVER['REQUEST_URI']."&acao=adicionar&id=$id'>$nome</a>";?></td>
 			<td><?php echo number_format($estoque,0,',','.');?></td>
 			<td><?php echo number_format($preco_venda,2,',','.');?></td>
 		  </tr>

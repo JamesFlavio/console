@@ -1,10 +1,8 @@
 <div class="col-lg-12" >
-
 <?php
 
 // BUGS
-// 01:  
-
+// 01: 
 
 @$cmd 					= $_GET ["cmd"];
 
@@ -30,10 +28,61 @@
 
 switch ($cmd) {
 case "adicionar":
-	include("cadastros/produtos-e-servicos-adicionar-cmd.php");
+	include("cadastros/produto-adiciona-cmd.php");
 	break;
 };	
 
+    require_once 'class/BancoMysql.php';
+    
+    @$id = $_GET["id"];
+    
+    if($id){
+        $db = new BancoMysql();
+        $db->setSelect("SELECT  tipo,
+                                barra,
+                                fabrica,
+                                nome,
+                                unidade,
+                                ncm_ncm,
+                                cest,
+                                grupo,
+                                estoque,
+                                minimo,
+                                maximo,
+                                cfop_entrada_cfop_cfop,
+                                cfop_saida_cfop_cfop,
+                                preco_custo,
+                                preco_venda,
+                                preco_minimo,
+                                observacao,
+                                ncm.descricao as ncm_descricao
+                        FROM produto
+                        JOIN ncm ON ncm.ncm = produto.ncm_ncm
+                        WHERE id = '$id'
+        ");
+        $rows = $db->getSelect();
+        
+        $tipo					= $rows["tipo"];
+        $barra					= $rows["barra"];
+        $fabrica				= $rows["fabrica"];
+        $nome					= $rows["nome"];
+        $unidade				= $rows["unidade"];
+        $ncm_ncm				= $rows["ncm_ncm"];
+        $ncm_descricao          = $rows["ncm_descricao"];
+        $cest					= $rows["cest"];
+        $grupo					= $rows["grupo"];
+        $estoque				= $rows["estoque"];
+        $minimo				    = $rows["minimo"];
+        $maximo				    = $rows["maximo"];
+        $cfop_entrada_cfop_cfop = $rows["cfop_entrada_cfop_cfop"];
+        $cfop_saida_cfop_cfop	= $rows["cfop_saida_cfop_cfop"];
+        $preco_custo			= $rows["preco_custo"];
+        $preco_venda			= $rows["preco_venda"];
+        $preco_minimo			= $rows["preco_minimo"];
+        $observacao			    = $rows["observacao"];
+        #$site					= $rows["site"];
+        
+    }
 ?>
 
 
@@ -73,11 +122,17 @@ case "adicionar":
 			<label>Unidade</label>
 			<input type="text" name="unidade" value="<?php echo $unidade;?>" class="form-control" placeholder="Unidade">
 		</div>
-		
-		<div class="form-group">
-			<label>NCM</label>
-			<input type="text" name="ncm_ncm" value="<?php echo $ncm_ncm;?>" class="form-control" placeholder="NCM">
+
+		<label>NCM</label>
+		<div class="input-group">
+			<input type="text" id="ncm_ncm" name="ncm_ncm" value="<?php echo $ncm_ncm;?>" class="form-control" placeholder="NCM" onfocusout="linkModal('cadastros/produto-consulta-ncm.php?ncm=', 'ncm_ncm');">
+			<div class="input-group-btn">
+				<button class="btn btn-default" type="button">
+					<i class="glyphicon glyphicon-search"></i>
+				</button>
+			</div>
 		</div>
+		<div id="ncm_descricao">Descrição: <?php echo $ncm_descricao ?></div>
 
 		<div class="form-group">
 			<label>CEST</label>
@@ -154,5 +209,3 @@ case "adicionar":
 <br>
 </div>
 <!-- /.row -->
-
-<script src="js/produtos-e-servicos-adicionar.js"></script>

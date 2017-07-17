@@ -178,7 +178,7 @@
                                 <a href="?console=cadastrosTransportadoras">Transportadoras</a>
                             </li>
                             <li>
-                                <a href="?console=cadastrosProdutosEServicos">Produtos e Serviços</a>
+                                <a href="?console=cadastroProduto">Produtos e Serviços</a>
                             </li>
                         </ul>
 					</li>
@@ -231,8 +231,8 @@
 					include("cadastros/transportadoras.php");
 					break;
 
-				case "cadastrosProdutosEServicos":
-					include("cadastros/produtos-e-servicos.php");
+				case "cadastroProduto":
+					include("cadastros/produto.php");
 					break;
 
 				case "manutencoesVendas":

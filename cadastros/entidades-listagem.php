@@ -2,6 +2,7 @@
 /**
  * BUGS/ALTERAÇÕES
  * 01 - Criar condição if antes de começar a listagem para ver se o resultado da pesquisa é maior que zero.
+ * 02 - Retirar link de edição da razão social e colocar como duplo clique na linha inteira
  */
 ?>
 <div class="col-lg-12">
@@ -25,42 +26,34 @@
 		
 		<?php
 
-		include("php/conexao-mysql.php");
-
-		$mysqlListagem 	="
-		SELECT id, cnpj_ou_cpf, razao_social_ou_nome, nome_fantasia_ou_sobrenome, cep_cep,
-		cidade.nome AS cidade, cidade.estado_uf AS uf
-		FROM cadastro
-		JOIN cep
-		JOIN cidade ON cidade.ibge = cep.cidade_ibge
-		WHERE cadastro.tipo LIKE '%$tipo%';
-		"; 
-		# $sqlListagem
-
-		$queryListagem = mysqli_query($conexaoMysql, $mysqlListagem);
-
-		if(!$queryListagem){
-			echo "Erro: queryListagem!";
-		};
-
-		// output data of each row
-		while($rowListagem = mysqli_fetch_assoc($queryListagem)) {
+		require_once 'class/BancoMysql.php';
+		
+		$bd = new BancoMysql();
+		$bd->setSelect("
+    		SELECT id, cnpj_ou_cpf, razao_social_ou_nome, nome_fantasia_ou_sobrenome, cep_cep,
+    		cidade.nome AS cidade, cidade.estado_uf AS uf
+    		FROM cadastro
+    		JOIN cep ON cep.cep = cadastro.cep_cep
+    		JOIN cidade ON cidade.ibge = cep.cidade_ibge
+    		WHERE cadastro.tipo LIKE '%$tipo%';
+        ");
+		
+		while($rows = $bd->getSelect()) {
 
 				// Faz captura de campos
-				$id							= $rowListagem["id"];
-				$cnpj_ou_cpf				= $rowListagem["cnpj_ou_cpf"];
-				$razao_social_ou_nome		= $rowListagem["razao_social_ou_nome"];
-				$nome_fantasia_ou_sobrenome	= $rowListagem["nome_fantasia_ou_sobrenome"];
-				$cidade						= $rowListagem["cidade"];
-				$uf							= $rowListagem["uf"];
+				$id							= $rows["id"];
+				$cnpj_ou_cpf				= $rows["cnpj_ou_cpf"];
+				$razao_social_ou_nome		= $rows["razao_social_ou_nome"];
+				$nome_fantasia_ou_sobrenome	= $rows["nome_fantasia_ou_sobrenome"];
+				$cidade						= $rows["cidade"];
+				$uf							= $rows["uf"];
 		
 		
 		?>
-
-		
+	
 		  <tr>
 			<td><?php echo $id;?></td>
-			<td><?php echo $razao_social_ou_nome;?></td>
+			<td><?php echo "<a href='".$_SERVER['REQUEST_URI']."&acao=adicionar&id=$id'>$razao_social_ou_nome</a>";?></td>
 			<td><?php echo $nome_fantasia_ou_sobrenome;?></td>
 			<td><?php echo $cnpj_ou_cpf;?></td>
 			<td><?php echo $cidade;?></td>

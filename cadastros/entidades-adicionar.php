@@ -50,6 +50,68 @@ case "adicionar":
 	break;
 };	
 
+
+    require_once 'class/BancoMysql.php';
+
+    @$id = $_GET["id"];    
+
+    if($id){
+        $db = new BancoMysql();
+        $db->setSelect("SELECT 	cadastro.cnpj_ou_cpf,
+                        		cadastro.ie_ou_rg,
+                                cadastro.im,
+                                cadastro.razao_social_ou_nome,
+                                cadastro.nome_fantasia_ou_sobrenome,
+                                cadastro.apelido,
+                                cadastro.cep_cep AS cep,
+                                cadastro.endereco,
+                                cadastro.numero,
+                                cadastro.bairro,
+                                cadastro.complemento,
+                                cadastro.telefone,
+                                cadastro.ramal,
+                                cadastro.fax,
+                                cadastro.celular,
+                                cadastro.responsavel,
+                                cadastro.site,
+                                cadastro.novidade,
+                                cadastro.promocao,
+                                cadastro.observacao,
+                                cidade.nome AS cidade_nome,
+                                cidade.estado_uf 
+                        FROM cadastro
+                        JOIN cep 	ON cep.cep = cadastro.cep_cep
+                        JOIN cidade ON cidade.ibge = cep.cidade_ibge
+                        WHERE id = '$id'");
+        $rows = $db->getSelect();
+        
+        $cnpj_ou_cpf                = $rows["cnpj_ou_cpf"];
+        $ie_ou_rg                   = $rows["ie_ou_rg"];
+        $im						    = $rows["im"];
+        $razao_social_ou_nome		= $rows["razao_social_ou_nome"];
+        $nome_fantasia_ou_sobrenome = $rows["nome_fantasia_ou_sobrenome"];
+        $apelido					= $rows["apelido"];
+        $cep						= $rows["cep"];
+        $cidade					    = $rows["cidade_nome"]; // ??? NÃO UTILIZADA POIS VEM DO CEP
+        #$ibge						= $rows["ibge"];
+        $uf						    = $rows["estado_uf"];
+        $endereco					= $rows["endereco"];
+        $numero					    = $rows["numero"];
+        $bairro					    = $rows["bairro"];
+        $complemento				= $rows["complemento"];
+        $telefone					= $rows["telefone"];
+        $ramal						= $rows["ramal"];
+        $fax						= $rows["fax"];
+        $celular					= $rows["celular"];
+        $responsavel				= $rows["responsavel"];
+        #$email						= $rows["email"];
+        $site						= $rows["site"];
+        $novidade					= $rows["novidade"];
+        $promocao					= $rows["promocao"];
+        $observacao				    = $rows["observacao"];
+    }
+
+
 ?>
 
 
@@ -253,4 +315,4 @@ case "adicionar":
 </div>
 <!-- /.row -->
 
-<script src="js/entidades-adicionar.js"></script>
+<script src="cadastros/js/entidades-adicionar.js"></script>
