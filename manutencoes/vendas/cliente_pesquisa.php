@@ -3,10 +3,9 @@
     <th>ID</th>
     <th>Razão Social</th>
   </tr>
-  <?php 
+  <?php
+    //teste
     @$pesquisa = $_GET['valor'];
-
-    //echo $pesquisa;
     
 	include("../../class/BancoMysql.php");
 
