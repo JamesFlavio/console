@@ -1,4 +1,46 @@
-<div class="col-lg-12" >
+<script>
+/**
+ * Verifica se algum cliente foi selecionado ao pressionar o botão adicionar "+".
+ */
+ function valida(){
+	 
+ 	if (form_cabecalho.id_cliente.value == ""){
+ 	 	
+		alert("Campos obrigatórios faltando!");
+ 		form_cabecalho.id_cliente.focus();
+ 		
+	} else {
+		form_cabecalho.submit();
+	}
+	
+ }
+
+
+ 
+/**
+ * Adiciona venda a table "venda" com o cliente selecionado e a data atual.
+ */
+
+/**
+ * Fecha o cabeçalho e segue para a venda.
+ */
+
+
+ /**
+  * Pesquisa o produto conforme o digitado
+  */
+ function pesquisa(){
+ 	
+ 	//verifica o valor pesquisado
+ 	var valor = document.getElementById("razao_social_nome").value;	
+
+ 	//imprime o select retornado na div resultados
+ 	$('#listaCliente').load("manutencoes/vendas/cliente_pesquisa.php?valor="+valor);
+ 	
+ }
+
+</script>
+
 
 <?php
 
@@ -6,40 +48,29 @@
 // 01:  
 
 
-@$cmd 			= $_GET ["cmd"];
-
 ?>
-
-<form method="post" action="?console=manutencoesVendas&acao=adicionar">
-	<div class="form-group ">
-		<label>Cliente</label>
-		<select id="id" name="id" class="form-control">
-			<option value="0">Selecione um cliente</option>
-		
-			<?php 
-	
-			include("class/BancoMysql.php");
-	
-			$bd	= new BancoMysql();
-			$bd->setSelect("SELECT id,razao_social_ou_nome FROM cadastro WHERE tipo LIKE '%0%';");
-			
-			while($rows	= $bd->getSelect()){
-				
-				$id						= $rows['id'];
-				$razao_social_ou_nome	= $rows['razao_social_ou_nome'];
-				
-			
-				// Imprime os resultados
-				echo "<option id='$id' value='$id'>$id - $razao_social_ou_nome</option>";
-			
-			}
-			
-			?>
-		</select>
-	
-		<button class="btn btn-default" type="submit">
-			<i class="glyphicon glyphicon-ok"></i>
-		</button>
-	
-	</div>
-</form>
+    <div class="modal-body">
+    	<form name="form_cabecalho" action="<?php echo $_SERVER['HTTP_REFERER']."&acao=venda"; ?>" method="POST">
+        	<div class="form-group row">
+          		<div class="col-xs-2">
+                    <label for="id">ID</label>
+                    <input class="form-control" type="text" id="id_cliente" disabled>
+                    <input type="hidden" id="hiddenId_cliente" name="id" >
+    			</div>
+                
+                <label for="cliente">Cliente</label>
+        		<div class="col-xs-10 input-group">
+            		<input class="form-control" type="text" id="razao_social_nome" onkeypress="pesquisa();">
+        			<div class="input-group-btn">
+            			<button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
+            			<button class="btn btn-default" onclick="valida()" type="button"><i class="glyphicon glyphicon-ok"></i></button>
+        			</div>      
+        		</div>
+    		</div>
+        </form>
+    </div>
+    <div id="listaCliente">
+    	<?php 
+        	include("cliente_pesquisa.php");
+        ?>
+    </div>
