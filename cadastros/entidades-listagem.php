@@ -28,6 +28,9 @@
 
 		require_once 'class/BancoMysql.php';
 		
+		/**
+		 * Cria o objeto banco para fazer a listagem dos clientes
+		 */
 		$bd = new BancoMysql();
 		$bd->setSelect("
     		SELECT id, cnpj_ou_cpf, razao_social_ou_nome, nome_fantasia_ou_sobrenome, cep_cep,
@@ -51,9 +54,9 @@
 		
 		?>
 	
-		  <tr>
+		  <tr ondblclick="location.href='<?php echo $_SERVER["REQUEST_URI"]."&acao=adicionar&id=$id";?>';";>
 			<td><?php echo $id;?></td>
-			<td><?php echo "<a href='".$_SERVER['REQUEST_URI']."&acao=adicionar&id=$id'>$razao_social_ou_nome</a>";?></td>
+			<td><?php echo $razao_social_ou_nome;?></td>
 			<td><?php echo $nome_fantasia_ou_sobrenome;?></td>
 			<td><?php echo $cnpj_ou_cpf;?></td>
 			<td><?php echo $cidade;?></td>

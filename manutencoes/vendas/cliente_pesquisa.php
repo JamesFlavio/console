@@ -4,7 +4,6 @@
     <th>Razão Social</th>
   </tr>
   <?php
-    //teste
     @$pesquisa = $_GET['valor'];
     
 	include("../../class/BancoMysql.php");
@@ -14,6 +13,7 @@
 	
 	while($rows	= $bd->getSelect()){
 		
+	    
 		$id						= $rows['id'];
 		$razao_social_ou_nome	= $rows['razao_social_ou_nome'];
 	

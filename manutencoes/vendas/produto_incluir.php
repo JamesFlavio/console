@@ -1,5 +1,7 @@
 <script>
-
+/**
+ * Pesquisa o produto conforme o digitado
+ */
 function pesquisar(){
 	
 	//verifica o valor pesquisado
@@ -10,14 +12,15 @@ function pesquisar(){
 	
 }
 
+/**
+ * Seleciona o produto e segue para tela de detalhes do produto como quantidade, CFOP, desconto etc.
+ */
 function selecionar(id){
 
 	//imprime o select retornado na div resultados
 	$('#divPesquisar').load("manutencoes/vendas/produto_pesquisar_selecionar.php?selecionar="+id);
 	
 }
-
-
 
 </script>
 

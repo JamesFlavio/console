@@ -18,7 +18,7 @@
 		WHERE nome LIKE '%$pesquisar%'
 		ORDER BY nome,preco_venda;
 	");
-
+	
 	// output data of each row
 	while($rows = $bd->getSelect()) {
 

@@ -46,12 +46,14 @@ BUGs
 	//Filtro para ações da página Cadastros filtrado do campo manutencoes>manutencoes.tipo
 	
 	switch ($console) {
-	case "adicionar":
-		include("manutencoes/vendas/produto_adicionar.php");
+	case "venda":
+		include("manutencoes/vendas/venda.php");
 		break;
-	case "adicionarCabecalho":
+/*	APAGAR
+ * case "adicionarCabecalho":
 		include("manutencoes/vendas/venda_cabecalho.php");
 		break;
+*/
 	default:
 		include("manutencoes/vendas/venda_listagem.php");
 	

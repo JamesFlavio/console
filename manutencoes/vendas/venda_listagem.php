@@ -6,37 +6,16 @@ BUGS
 <div class="col-lg-12">
 
 	<div name="formularios" class="row">
+
+		<form class="col-xs-10 col-sm-11 col-md-11 col-lg-11">
 		
-		<form
-		
-		class="
-				col-xs-2
-				col-sm-1
-				col-md-1
-				col-lg-1
-			  "
-		
-		method="post" action="<?php echo $_SERVER['REQUEST_URI'];?>&acao=adicionarCabecalho">
 		  <div class="input-group">
 			<div class="input-group-btn">
-			  <button class="btn btn-default" type="submit">
+			  <button class="btn btn-default" type="button" onclick="linkModal('manutencoes/vendas/venda_cabecalho.php');">
 				<i class="glyphicon glyphicon-plus"></i>
 			  </button>
 			</div>
-		  </div>
-		</form>
-	
-		<form
-		
-		class="
-				col-xs-10
-				col-sm-11
-				col-md-11
-				col-lg-11
-			  "
-		
-		>
-		  <div class="input-group">
+
 			<input type="text" class="form-control" placeholder="Pesquisar">
 			<div class="input-group-btn">
 			  <button class="btn btn-default" type="submit">
@@ -44,6 +23,7 @@ BUGS
 			  </button>
 			</div>
 		  </div>
+		  
 		</form>
 		
 		</div>

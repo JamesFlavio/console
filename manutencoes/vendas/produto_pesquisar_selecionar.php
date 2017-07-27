@@ -1,5 +1,21 @@
 <script>
 
+/**
+ * Verifica se a venda já existe, se não adiciona a mesma a tabela "venda".
+ */
+
+
+/**
+ * Adiciona o produto a venda na tabela "venda_item".
+ */
+
+
+/**
+ * Volta a tela de pesquisa
+ */
+	
+
+
 	function acaoAdicionar(){
 	
 	var id 				= document.getElementById("id").value;
@@ -13,7 +29,7 @@
 
 </script>
 
-<form>
+<form method="POST" action="linkModal()">
 	<table id="resultados" class="table-striped table-hover">
 	<tr>
 		<td>Código</td>
