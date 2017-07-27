@@ -14,10 +14,10 @@ class BancoMysql {
 	 * @param $senha	Senha de conexão
 	 * @param $banco	Nome do banco de dados Mysql
 	 */
-	private $host		= "169.254.27.210";
+	private $host		= "localhost";
 	private $usuario	= "usuario";
 	private $senha		= "senha";
-	private $banco		= "emporioa_desenvolvimento";
+	private $banco		= "desenvolvimento";
 	
 	private $conexao;
 	private $select;
