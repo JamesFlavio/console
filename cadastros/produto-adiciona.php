@@ -24,7 +24,9 @@
 @$preco_minimo			= $_POST ["preco_minimo"];
 @$observacao			= $_POST ["observacao"];
 @$site					= $_POST ["site"];
-
+$ncm_descricao          ='';
+$cfop_entrada_descricao ='';
+$cfop_saida_descricao   ='';
 
 switch ($cmd) {
 case "adicionar":
@@ -138,7 +140,7 @@ case "adicionar":
 				</button>
 			</div>
 		</div>
-		<div id="ncm_descricao">Descrição: <?php echo $ncm_descricao ?></div>
+		<div id="ncm_descricao">Descrição: <?php echo $ncm_descricao;?></div>
 
 		<div class="form-group">
 			<label>CEST</label>
@@ -170,7 +172,7 @@ case "adicionar":
 		<div class="row col-lg-6">
 			<label>CFOP de Entrada</label>
 			<div class="form-group col-xs-6  input-group">
-				<input type="text" id="cfop_entrada_cfop_cfop" name="cfop_entrada_cfop_cfop" value="<?php echo $cfop_entrada_cfop_cfop;?>" class="form-control" placeholder="CFOP de Entrada" onfocusout="linkModal('cadastros/produto-consulta-cfop.php?cfop=', 'cfop_entrada_cfop_cfop');">
+				<input type="text" id="cfop_entrada_cfop_cfop" name="cfop_entrada_cfop_cfop" value="<?php echo $cfop_entrada_cfop_cfop;?>" class="form-control" placeholder="CFOP de Entrada" onfocusout="linkModal('cadastros/produto-consulta-cfop-entrada.php?cfop=', 'cfop_entrada_cfop_cfop');">
 				<div class="input-group-btn">
     				<button class="btn btn-default" type="button">
     					<i class="glyphicon glyphicon-search"></i>
@@ -181,7 +183,7 @@ case "adicionar":
 			
 			<label>CFOP de Saída</label>
 			<div class="form-group col-xs-6 input-group">
-				<input type="text" id="cfop_saida_cfop_cfop" name="cfop_saida_cfop_cfop" value="<?php echo $cfop_saida_cfop_cfop;?>" class="form-control" placeholder="CFOP de Saída" onfocusout="linkModal('cadastros/produto-consulta-cfop.php?cfop=', 'cfop_saida_cfop_cfop');">
+				<input type="text" id="cfop_saida_cfop_cfop" name="cfop_saida_cfop_cfop" value="<?php echo $cfop_saida_cfop_cfop;?>" class="form-control" placeholder="CFOP de Saída" onfocusout="linkModal('cadastros/produto-consulta-cfop-saida.php?cfop=', 'cfop_saida_cfop_cfop');">
 				<div class="input-group-btn">
     				<button class="btn btn-default" type="button">
     					<i class="glyphicon glyphicon-search"></i>
