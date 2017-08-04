@@ -109,12 +109,8 @@ case "adicionar":
 	</button>
 	
 	<button class="btn btn-default" type="submit">
-<<<<<<< HEAD
-		<i class="glyphicon glyphicon-floppy-disk"> Salvar como</i>
-=======
 		<i class="glyphicon glyphicon-floppy-disk"></i>
-		Salvar
->>>>>>> branch 'master' of https://github.com/JamesFlavio/console.git
+		Salvar como
 	</button>
 </div>
 	<table class="table table-striped" style="overflow: auto;">
