@@ -64,11 +64,7 @@ case "adicionar":
 	</button>
 
 	<button class="btn btn-default" type="submit">
-		<i class="glyphicon glyphicon-remove"> Excluir</i>
-	</button>
-
-	<button class="btn btn-default" type="submit">
-		<i class="glyphicon glyphicon-remove-circle"> Excluir Tudo</i>
+		<i class="glyphicon glyphicon-remove"> Excluir Tudo</i>
 	</button>
 
 	<button class="btn btn-default" type="submit">
@@ -83,10 +79,11 @@ case "adicionar":
 		<thead>
 		  <tr>
 			<th class="col-sm-1">Cod.</th>
-			<th>Nome</th>
-			<th class="col-sm-2">Qnt</th>
+			<th class="col-sm-5">Nome</th>
+			<th class="col-sm-2 text-center">Qnt</th>
 			<th class="col-sm-2">Preço Unt.</th>
 			<th class="col-sm-2">Total</th>
+			<th></th>
 		  </tr>
 		</thead>
 		<tbody>
@@ -118,19 +115,47 @@ case "adicionar":
 
 		
 		  <tr>
-			<td><?php echo $produtosEServicos_id;?></td>
+			<td>Produto <?php echo $produtosEServicos_id;?></td>
 			<td><?php echo $nome;?></td>
 			<td><?php echo $quantidade;?></td>
 			<td><?php echo $preco;?></td>
-			<td><?php echo $quantidade*$preco;?></td>
+			<td>Total <?php echo $quantidade*$preco;?></td>
 		  </tr>
 
 		<?php
 
 		};
-
+        
 		?>
-
+		<tr>
+			<td>Produto </td>
+			<td>Nome</td>
+			<td>
+                <div class="input-group form-group">
+                	<!-- <div class="input-group-btn">
+                    	<button class="btn btn-default" type="submit">
+                    		<i class="glyphicon glyphicon-minus"></i>
+                    	</button>
+                    </div> -->
+                	
+                	<input id="qtd" type="number" class="form-control">
+                	
+                	<!-- <div class="input-group-btn">
+                    	<button class="btn btn-default" type="submit">
+                    		<i class="glyphicon glyphicon-plus"></i>
+                    	</button>
+                    </div> -->
+                </div>
+			</td>
+			<td>Preço</td>
+			<td>Total</td>
+			<td>	
+				<button class="btn btn-default" type="submit">
+					<i class="glyphicon glyphicon-remove"></i>
+					<span>Excluir</span>
+				</button>
+			</td>
+		  </tr>
 		</tbody>
 	</table>
 
