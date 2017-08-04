@@ -89,23 +89,32 @@ case "adicionar":
 
 <div class="col-xs-12">
 	<button class="btn btn-default" type="button" onclick="linkModal('manutencoes/vendas/produto_incluir.php');">
-		<i class="glyphicon glyphicon-ok"> Incluir</i>
+		<i class="glyphicon glyphicon-ok"></i>
+		Incluir
 	</button>
 
 	<button class="btn btn-default" type="submit">
-		<i class="glyphicon glyphicon-remove"> Excluir Tudo</i>
+		<i class="glyphicon glyphicon-remove"></i>
+		Excluir Tudo
 	</button>
 
 	<button class="btn btn-default" type="submit">
-		<i class="glyphicon glyphicon-usd"> Faturar</i>
+		<i class="glyphicon glyphicon-usd"></i>
+		Faturar
 	</button>
 	
 	<button class="btn btn-default" type="submit">
-		<i class="glyphicon glyphicon-file"> Nota Fiscal</i>
+		<i class="glyphicon glyphicon-file"></i>
+		Nota Fiscal
 	</button>
 	
 	<button class="btn btn-default" type="submit">
+<<<<<<< HEAD
 		<i class="glyphicon glyphicon-floppy-disk"> Salvar como</i>
+=======
+		<i class="glyphicon glyphicon-floppy-disk"></i>
+		Salvar
+>>>>>>> branch 'master' of https://github.com/JamesFlavio/console.git
 	</button>
 </div>
 	<table class="table table-striped" style="overflow: auto;">
