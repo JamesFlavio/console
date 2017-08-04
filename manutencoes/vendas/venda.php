@@ -150,9 +150,9 @@ case "adicionar":
 			<td>Preço</td>
 			<td>Total</td>
 			<td>	
-				<button class="btn btn-default" type="submit">
+				<button class="btn btn-default" type="button">
 					<i class="glyphicon glyphicon-remove"></i>
-					<span>Excluir</span>
+					Excluir
 				</button>
 			</td>
 		  </tr>
