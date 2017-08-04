@@ -68,6 +68,10 @@ case "adicionar":
 	</button>
 
 	<button class="btn btn-default" type="submit">
+		<i class="glyphicon glyphicon-usd"> Faturar</i>
+	</button>
+	
+	<button class="btn btn-default" type="submit">
 		<i class="glyphicon glyphicon-file"> Nota Fiscal</i>
 	</button>
 	
