@@ -17,48 +17,77 @@ case "adicionar":
 };	
 
 ?>
+	<div class="col-xs-12">
+	<button class="btn btn-default" type="button" onclick="linkModal('manutencoes/vendas/produto_incluir.php');">
+		<span class="glyphicon glyphicon-user"></span>
+		Alterar cliente
+	</button>
+	</div>
+
 <div class="form-group ">
-	Cliente
-		<?php 
 
-		/**
-		 * Faz o insert no banco de uma nova venda ao cliente selecionado
-		 */
-		 $_SESSION['venda']=[
-			"cadastro_id"	=> "$id",
-			"data"			=> date("Y-m-d H:i:s")
-		 ];
-		 
-		 //var_dump($_SESSION['venda']);
-		 
-		 //echo $_SESSION['venda']['cadastro_id']." AQUI";
+	<?php 
 
-		// SELECT
-		
-		include("class/BancoMysql.php");
+	/**
+	 * Faz o insert no banco de uma nova venda ao cliente selecionado
+	 */
+	 $_SESSION['venda']=[
+		"cadastro_id"	=> "$id",
+		"data"			=> date("Y-m-d H:i:s")
+	 ];
+	 
+	 //var_dump($_SESSION['venda']);
+	 
+	 //echo $_SESSION['venda']['cadastro_id']." AQUI";
+
+	// SELECT
 	
-		$bd	= new BancoMysql();
-		$bd->setSelect("SELECT id, razao_social_ou_nome FROM cadastro WHERE id = '".$_SESSION['venda']['cadastro_id']."';");
+	include("class/BancoMysql.php");
+
+	$bd	= new BancoMysql();
+	$bd->setSelect("SELECT id, razao_social_ou_nome,cnpj_ou_cpf FROM cadastro WHERE id = '".$_SESSION['venda']['cadastro_id']."';");
+	
+	$rows	= $bd->getSelect();
 		
-		$rows	= $bd->getSelect();
-			
-			$id						= $rows['id'];
-			$razao_social_ou_nome	= $rows['razao_social_ou_nome'];
-				
+		$id						= $rows['id'];
+		$razao_social_ou_nome	= $rows['razao_social_ou_nome'];
+		$cnpj_ou_cpf         	= $rows['cnpj_ou_cpf'];
 		
-		/**
-		 * Imprime resultados
-		 */
-		 echo "$id: $razao_social_ou_nome";
-		
-		
-		$_SESSION['venda_cliente']="$id";
-		
-		 
-		 //$bd->setInsert("venda",$dados);
+	
+	/**
+	 * Imprime resultados
+	 */
+	 echo "
+	<div class='col-xs-12'>
+		<div class='col-xs-1'>ID</div>
+		<div class='col-xs-11'>$id</div>
+	</div>
+
+	<div class='col-xs-12'>
+		<div class='col-xs-1'>Razão Social</div>
+		<div class='col-xs-11'>$razao_social_ou_nome</div>
+	</div>
+
+	<div class='col-xs-12'>
+		<div class='col-xs-1'>CNPJ/CPF</div>
+		<div class='col-xs-11'>$cnpj_ou_cpf</div>
+	</div>
+
+	<div class='col-xs-12'>
+		<div class='col-xs-1'>Contato:</div>
+		<div class='col-xs-11'>Nome do contato</div>
+	</div>
+
+	<div class='col-xs-12'>
+		<div class='col-xs-1'>Telefone</div>
+		<div class='col-xs-11'>(61)3046-6866</div>
+	</div>
+         ";
 		 
 		?>
 </div>
+
+<div class="col-xs-12">
 	<button class="btn btn-default" type="button" onclick="linkModal('manutencoes/vendas/produto_incluir.php');">
 		<i class="glyphicon glyphicon-ok"> Incluir</i>
 	</button>
@@ -76,9 +105,9 @@ case "adicionar":
 	</button>
 	
 	<button class="btn btn-default" type="submit">
-		<i class="glyphicon glyphicon-floppy-disk"> Salvar</i>
+		<i class="glyphicon glyphicon-floppy-disk"> Salvar como</i>
 	</button>
-
+</div>
 	<table class="table table-striped" style="overflow: auto;">
 		<thead>
 		  <tr>
