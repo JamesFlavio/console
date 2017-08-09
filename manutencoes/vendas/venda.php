@@ -61,28 +61,6 @@
 		</div>
 	</div>
 
-	<div class="row">	
-		<div class='col-xs-1'>Razão Social</div>
-		<div class='col-xs-10'><?php echo $razao_social_ou_nome?></div>
-	</div>
-
-
-	<div class="row">	
-		<div class='col-xs-1'>CNPJ/CPF</div>
-		<div class='col-xs-10'><?php echo $cnpj_ou_cpf?></div>
-	</div>
-
-
-	<div class="row">	
-		<div class='col-xs-1'>Contato:</div>
-		<div class='col-xs-10'><?php echo "Nome do contato"?></div>
-	</div>
-
-	<div class="row">	
-		<div class='col-xs-1'>Telefone</div>
-		<div class='col-xs-10'><?php echo "(61)3046-6866"?></div>
-	</div>
-
     <div class="row">
 		<div class="col-xs-12">
         	<button class="btn btn-default" type="button" onclick="linkModal('manutencoes/vendas/produto_incluir.php');">
