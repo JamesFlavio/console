@@ -45,7 +45,6 @@
 	</div>
 
 	<div class="row">	
-<<<<<<< HEAD
 		<div class="col-lg-2">
 			<div>ID:</div>
 			<div>Razão Social:</div>
@@ -60,14 +59,7 @@
     		<div><?php echo "Nome do contato"?></div>
     		<div><?php echo "(61)3046-6866"?></div>
 		</div>
-=======
-		<div class='col-xs-1'>ID</div>
-		<div class='col-xs-10'><?php echo $id?></div>	
->>>>>>> branch 'master' of https://github.com/JamesFlavio/console.git
 	</div>
-
-<<<<<<< HEAD
-=======
 
 	<div class="row">	
 		<div class='col-xs-1'>Razão Social</div>
@@ -91,8 +83,6 @@
 		<div class='col-xs-10'><?php echo "(61)3046-6866"?></div>
 	</div>
 
-
->>>>>>> branch 'master' of https://github.com/JamesFlavio/console.git
     <div class="row">
 		<div class="col-xs-12">
         	<button class="btn btn-default" type="button" onclick="linkModal('manutencoes/vendas/produto_incluir.php');">
@@ -205,7 +195,6 @@
         	</td>
         </tr>
 	</table>
-<<<<<<< HEAD
 	
 	<div class="row">
 		<div class="col-lg-4 col-lg-offset-8">
@@ -241,7 +230,5 @@
         	</table>
         </div>
     </div>
-=======
->>>>>>> branch 'master' of https://github.com/JamesFlavio/console.git
 </div>
 <script src="manutencoes/vendas/js/produtos-e-servicos-adicionar.js"></script>
