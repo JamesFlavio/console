@@ -44,22 +44,32 @@
     	</div>
 	</div>
 
-	<div class="row">	
-		<div class="col-lg-2">
-			<div>ID:</div>
-			<div>Razão Social:</div>
-			<div>CNPJ/CPF:</div>
-    		<div>Contato:</div>
-    		<div>Telefone:</div>
-		</div>
-		<div class="col">
-    		<div><?php echo $id?></div>	
-			<div><?php echo $razao_social_ou_nome?></div>
-    		<div><?php echo $cnpj_ou_cpf?></div>
-    		<div><?php echo "Nome do contato"?></div>
-    		<div><?php echo "(61)3046-6866"?></div>
-		</div>
-	</div>
+    <div class="row">
+    	<div class="col-lg-4">
+        	<table class="table table-condensed table-responsive">
+        		<tr>
+        			<td>ID:</td>
+        			<td><?php echo $id?></td>
+        		</tr>
+        		<tr>
+        			<td>Razão Social:</td>
+        			<td><?php echo $razao_social_ou_nome?></td>
+        		</tr>
+        		<tr>
+        			<td>CNPJ/CPF:</td>
+        			<td><?php echo $cnpj_ou_cpf?></td>
+        		</tr>
+        		<tr>
+        			<td>Contato:</td>
+        			<td><?php echo "Nome do contato"?></td>
+        		</tr>
+        		<tr>
+        			<td>Telefone:</td>
+        			<td><?php echo "(61)3046-6866"?></td>
+        		</tr>
+        	</table>
+    	</div>
+    </div>
 
     <div class="row">
 		<div class="col-xs-12">
