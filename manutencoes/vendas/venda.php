@@ -163,8 +163,16 @@
                     </div> -->
                     </div>
         	</td>
-        	<td>Preço</td>
-        	<td>Total</td>
+        	<td>
+        		<div class="input-group form-group">
+        			<input type="number" class="form-control">
+        		</div>
+        	</td>
+        	<td>
+				<div class="input-group form-group">
+        			<input type="number" class="form-control">
+        		</div>
+			</td>
         	<td>	
         		<button class="btn btn-default" type="button">
         			<i class="glyphicon glyphicon-remove"></i>
