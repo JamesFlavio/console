@@ -91,7 +91,7 @@
         	</button>
 
 
-        	<button class="btn btn-default" type="submit">
+        	<button class="btn btn-default" type="submit" onclick="linkModal('manutencoes/vendas/nota_fiscal.php','')">
         		<i class="glyphicon glyphicon-file"></i>
         		Nota Fiscal
         	</button>
