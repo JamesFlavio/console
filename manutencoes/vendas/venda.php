@@ -25,7 +25,7 @@
     	include("class/BancoMysql.php");
     
     	$bd	= new BancoMysql();
-    	$bd->setSelect("SELECT id, razao_social_ou_nome,cnpj_ou_cpf FROM cadastro WHERE id = '".$_SESSION['venda']['cadastro_id']."';");
+    	$bd->setSelect("SELECT id, razao_social_ou_nome,cnpj_ou_cpf FROM cadastro WHERE id = '$id'");
     	
     	$rows	= $bd->getSelect();
     		
@@ -103,14 +103,14 @@
 		</div>
     </div>
     
-	<table class="table table-striped" style="overflow: auto;">
+	<table class="table table-striped">
         <tr>
-            <th class="col-sm-1">Cod.</th>
-            <th class="col-sm-4">Nome</th>
-            <th class="col-sm-2 text-center">Qnt</th>
-            <th class="col-sm-2">Preço Unt.</th>
-            <th class="col-sm-2">Total</th>
-            <th class="col-sm-1">Excluir</th>
+            <th>Cod.</th>
+            <th>Nome</th>
+            <th>Qnt</th>
+            <th>Preço Unt.</th>
+            <th>Total</th>
+            <th>Excluir</th>
         </tr>
 
 		
@@ -154,41 +154,23 @@
     
 	?>
         <tr>
-        	<td>Produto </td>
-        	<td>Nome</td>
+        	<td>Produto</td>
+        	<td>Nome de produto excepcionalmente grande para fins de teste do layout.</td>
         	<td>
-                <div class="input-group form-group">
-                	<!-- <div class="input-group-btn">
-                    	<button class="btn btn-default" type="submit">
-                    		<i class="glyphicon glyphicon-minus"></i>
-                    	</button>
-                    </div> -->
-                	
-                	<input id="qtd" type="number" class="form-control">
-                	
-                	<!-- <div class="input-group-btn">
-                    	<button class="btn btn-default" type="submit">
-                    		<i class="glyphicon glyphicon-plus"></i>
-                    	</button>
-                    </div> -->
-                    </div>
-        	</td>
+        		<input id="qtd" type="number" class="form-control">
+    		</td>
         	<td>
-        		<div class="input-group form-group">
-        			<input type="number" class="form-control">
-        		</div>
-        	</td>
+        		<input type="number" class="form-control">
+    		</td>
         	<td>
-				<div class="input-group form-group">
-        			<input type="number" class="form-control">
-        		</div>
-			</td>
-        	<td>	
+        		<input type="number" class="form-control">
+    		</td>
+        	<td>
         		<button class="btn btn-default" type="button">
         			<i class="glyphicon glyphicon-remove"></i>
         			Excluir
-        		</button>
-        	</td>
+    			</button>
+			</td>
         </tr>
 	</table>
 	
