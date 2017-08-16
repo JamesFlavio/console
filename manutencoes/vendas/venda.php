@@ -173,6 +173,41 @@
 			</td>
         </tr>
 	</table>
+
+	<div class="row">
+		<div class="col-lg-4">
+        	<table class="table table-condensed table-responsive">
+        		<tr>
+        			<td>Condição de pagamento:</td>
+        			<td>30/60/90</td>
+        		</tr>
+        		<tr>
+        			<td>Espécie:</td>
+        			<td>Boleto</td>
+        		</tr>
+        		<tr>
+        			<td></td>
+        			<td>Parcelas:</td>
+        		</tr>
+        		<tr>
+        			<td></td>
+        			<td>10/08/2017</td>
+        		</tr>
+        		<tr>
+        			<td></td>
+        			<td>10/08/2017</td>
+        		</tr>
+        		<tr>
+        			<td></td>
+        			<td>10/08/2017</td>
+        		</tr>
+        		<tr>
+        			<td></td>
+        			<td>10/08/2017</td>
+        		</tr>
+        	</table>
+        </div>
+    </div>
 	
 	<div class="row">
 		<div class="col-lg-4 col-lg-offset-8">
@@ -214,14 +249,14 @@
     <div class="modal-dialog modal-lg">
     
       <!-- Modal content-->
-      <div class="modal-content">
+      <div class="modal-content" id="nfContent">
       	<!-- Modal header-->
-        <div class="modal-header">
+        <div class="modal-header" id="nfHeader">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title text-center">Nota Fiscal</h4>
         </div>
         <!-- Modal body-->
-        <div class="modal-body">
+        <div class="modal-body" id="nfBody">
             <ul class="nav nav-tabs">
               <li class="active"><a data-toggle="tab" href="#cabecalho">Cabeçalho</a></li>
               <li><a data-toggle="tab" href="#transportador">Transportador</a></li>

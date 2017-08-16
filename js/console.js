@@ -20,7 +20,7 @@ function linkModal(link, id){
 	if(link){
 
 		// Abre link em Modal com o valor digitado
-		$('.modal-body').load(link+valor);
+		$('#modal-body').load(link+valor);
 
 		$('#myModal').modal('show');
 
