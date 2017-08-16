@@ -233,10 +233,6 @@
         			<td>Total do pedido:</td>
         			<td>Valor total</td>
         		</tr>
-        		<tr>
-        			<td>Condição de pagamento:</td>
-        			<td>Condição</td>
-        		</tr>
         	</table>
         </div>
     </div>
