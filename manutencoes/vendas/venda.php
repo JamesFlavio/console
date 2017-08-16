@@ -176,7 +176,7 @@
 
 	<div class="row">
 		<div class="col-sm-4 col-md-4 col-lg-4">
-        	<table class="table table-striped">
+        	<table class="table table-striped table-condensed">
         		<tr>
         			<td colspan=2>Condição de pagamento:</td>
         			<td>30/60/90</td>
