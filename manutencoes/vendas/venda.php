@@ -85,13 +85,13 @@
         	</button>
 
 
-        	<button class="btn btn-default" type="submit">
+        	<button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalFaturar">
         		<i class="glyphicon glyphicon-usd"></i>
         		Faturar
         	</button>
 
 
-        	<button class="btn btn-default" type="button" data-toggle="modal" data-target="#notaFiscal">
+        	<button class="btn btn-default" type="button" data-toggle="modal" data-target="#modalNotaFiscal">
         		<i class="glyphicon glyphicon-file"></i>
         		Nota Fiscal
         	</button>
@@ -238,9 +238,9 @@
         	</table>
         </div>
     </div>
-  <!-- Modal -->
-
-  <div class="modal fade" id="notaFiscal" role="dialog">
+    
+  <!-- Modal Nota Fiscal-->
+  <div class="modal fade" id="modalNotaFiscal" role="dialog">
     <div class="modal-dialog modal-lg">
     
       <!-- Modal content-->
@@ -455,5 +455,47 @@
       
     </div>
   </div> <!-- Modal -->
+
+  <!-- Modal Faturar-->
+  <div class="modal fade" id="modalFaturar" role="dialog">
+    <div class="modal-dialog modal-lg">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title text-center">Condição de Pagamento</h4>
+        </div>
+        <div class="modal-body">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <tr>
+                  <td>Cód.</td>
+                  <td>Parcelas</td>
+                  <td>Qtd. Parcelas</td>
+                  <td>Descrição</td>
+              </tr>
+              <tr>
+                  <td>1</td>
+                  <td>0</td>
+                  <td>01</td>
+                  <td>À Vista</td>
+              </tr>
+              <tr>
+                  <td>2</td>
+                  <td>30/60</td>
+                  <td>02</td>
+                  <td>Duas vezes</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 </div>
 <script src="manutencoes/vendas/js/produtos-e-servicos-adicionar.js"></script>
