@@ -154,7 +154,9 @@
     
 	?>
         <tr>
-        	<td>Produto</td>
+        	<td>
+        		<input type="number" class="form-control">
+        	</td>
         	<td>Nome de produto excepcionalmente grande para fins de teste do layout.</td>
         	<td>
         		<input id="qtd" type="number" class="form-control">
