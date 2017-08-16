@@ -234,10 +234,6 @@
         			<td>Valor total</td>
         		</tr>
         		<tr>
-        			<td>Espécie:</td>
-        			<td>Valor total</td>
-        		</tr>
-        		<tr>
         			<td>Condição de pagamento:</td>
         			<td>Condição</td>
         		</tr>
