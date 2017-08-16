@@ -175,42 +175,43 @@
 	</table>
 
 	<div class="row">
-		<div class="col-lg-4">
-        	<table class="table table-condensed table-responsive">
+		<div class="col-sm-4 col-md-4 col-lg-4">
+        	<table class="table table-striped">
         		<tr>
-        			<td>Condição de pagamento:</td>
+        			<td colspan=2>Condição de pagamento:</td>
         			<td>30/60/90</td>
         		</tr>
         		<tr>
-        			<td>Espécie:</td>
+        			<td colspan=2>Espécie:</td>
         			<td>Boleto</td>
         		</tr>
         		<tr>
-        			<td></td>
-        			<td>Parcelas:</td>
+        			<td colspan=3 class="text-center">Parcelas:</td>
         		</tr>
         		<tr>
-        			<td></td>
+        			<td>10/08/2017</td>
+        			<td>10/08/2017</td>
         			<td>10/08/2017</td>
         		</tr>
         		<tr>
-        			<td></td>
+        			<td>10/08/2017</td>
+        			<td>10/08/2017</td>
         			<td>10/08/2017</td>
         		</tr>
         		<tr>
-        			<td></td>
+        			<td>10/08/2017</td>
+        			<td>10/08/2017</td>
         			<td>10/08/2017</td>
         		</tr>
         		<tr>
-        			<td></td>
+        			<td>10/08/2017</td>
+        			<td>10/08/2017</td>
         			<td>10/08/2017</td>
         		</tr>
         	</table>
         </div>
-    </div>
-	
-	<div class="row">
-		<div class="col-lg-4 col-lg-offset-8">
+
+		<div class="col-lg-4 col-lg-offset-4">
         	<table class="table table-condensed table-responsive">
         		<tr>
         			<td>Total de produtos:</td>
