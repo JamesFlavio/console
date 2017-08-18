@@ -175,69 +175,66 @@
 			</td>
         </tr>
 	</table>
-
-	<div class="row">
-		<div class="col-sm-4 col-md-4 col-lg-4">
-        	<table class="table table-striped table-condensed">
-        		<tr>
-        			<td colspan=2>Condição de pagamento:</td>
-        			<td>30/60/90</td>
-        		</tr>
-        		<tr>
-        			<td colspan=2>Espécie:</td>
-        			<td>Boleto</td>
-        		</tr>
-        		<tr>
-        			<td colspan=3 class="text-center">Parcelas:</td>
-        		</tr>
-        		<tr>
-        			<td>10/08/2017</td>
-        			<td>10/08/2017</td>
-        			<td>10/08/2017</td>
-        		</tr>
-        		<tr>
-        			<td>10/08/2017</td>
-        			<td>10/08/2017</td>
-        			<td>10/08/2017</td>
-        		</tr>
-        		<tr>
-        			<td>10/08/2017</td>
-        			<td>10/08/2017</td>
-        			<td>10/08/2017</td>
-        		</tr>
-        		<tr>
-        			<td>10/08/2017</td>
-        			<td>10/08/2017</td>
-        			<td>10/08/2017</td>
-        		</tr>
-        	</table>
+	
+<div class="row col-lg-12">
+ 
+    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-4 col-lg-4">
+      <div class="panel panel-warning">
+        <div class="panel-heading">Espécie:</div>
+        <div class="panel-body">Espécie:
+            <select>
+              <option value="volvo">Dinheiro</option>
+              <option value="saab">Cartão</option>
+              <option value="saab">Boleto</option>
+              <option value="opel">Cheque</option>
+              <option value="audi">Outros</option>
+            </select>
         </div>
-
-		<div class="col-lg-4 col-lg-offset-4">
-        	<table class="table table-condensed table-responsive">
-        		<tr>
-        			<td>Total de produtos:</td>
-        			<td>Valor total</td>
-        		</tr>
-        		<tr>
-        			<td>Total de serviços:</td>
-        			<td>Valor total</td>
-        		</tr>
-        		<tr>
-        			<td>Frete/acréscimos:</td>
-        			<td>Valor total</td>
-        		</tr>
-        		<tr>
-        			<td>Descontos:</td>
-        			<td>Valor total</td>
-        		</tr>
-        		<tr>
-        			<td>Total do pedido:</td>
-        			<td>Valor total</td>
-        		</tr>
-        	</table>
-        </div>
+      </div>
     </div>
+    
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-lg-4">
+      <div class="panel panel-success">
+        <div class="panel-heading">Condição de pagamento</div>
+        <div class="panel-body">30/60/90</div>
+        <div class="panel-body">10/08/2017 - 10/08/2017 - 10/08/2017 - 10/08/2017 - 10/08/2017</div>
+      </div>
+    </div>
+    
+    <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4 col-lg-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Resumo</div>
+        <div class="panel-body">
+			<div>
+            	<table class="table table-condensed table-responsive">
+            		<tr>
+            			<td>Total de produtos:</td>
+            			<td>Valor total</td>
+            		</tr>
+            		<tr>
+            			<td>Total de serviços:</td>
+            			<td>Valor total</td>
+            		</tr>
+            		<tr>
+            			<td>Frete/acréscimos:</td>
+            			<td>Valor total</td>
+            		</tr>
+            		<tr>
+            			<td>Descontos:</td>
+            			<td>Valor total</td>
+            		</tr>
+            		<tr>
+            			<td>Total do pedido:</td>
+            			<td>Valor total</td>
+            		</tr>
+            	</table>
+			</div>
+		</div>
+      </div>
+    </div>
+
+</div>
+
   <!-- Modal -->
 
   <div class="modal fade" id="notaFiscal" role="dialog">
