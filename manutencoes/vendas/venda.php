@@ -195,9 +195,34 @@
     
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-lg-4">
       <div class="panel panel-success">
+      
         <div class="panel-heading">Condição de pagamento</div>
-        <div class="panel-body">30/60/90</div>
-        <div class="panel-body">10/08/2017 - 10/08/2017 - 10/08/2017 - 10/08/2017 - 10/08/2017</div>
+        
+        <div class="panel-body">
+        	<div calss="row col-lg-12">
+    			<div class=" row col-lg-5">
+        		  <div class="input-group">
+        			<input type="text" class="form-control" placeholder="Cód.">
+        			<div class="input-group-btn">
+        			  <button class="btn btn-default" type="submit">
+        				<i class="glyphicon glyphicon-search"></i>
+        			  </button>
+        			</div>
+        		  </div>
+    		  	</div>
+    			<div class="col-lg-7">6x com 30 dias.</div>
+		  	</div>
+		  	<div class="row col-lg-12 text-center">Parcelas</div>
+		  	<div class="row col-lg-12">
+             	<div class="col-lg-6"><span class="badge badge-primary">1º</span>18/08/2017</div>
+            	<div class="col-lg-6"><span class="badge badge-primary">2º</span>18/09/2017</div>
+            	<div class="col-lg-6"><span class="badge badge-primary">3º</span>18/10/2017</div>
+            	<div class="col-lg-6"><span class="badge badge-primary">4º</span>18/11/2017</div>
+            	<div class="col-lg-6"><span class="badge badge-primary">5º</span>18/12/2017</div>
+            	<div class="col-lg-6"><span class="badge badge-primary">6º</span>18/01/2018</div>
+        	</div>
+        </div>
+
       </div>
     </div>
     
