@@ -180,7 +180,7 @@
  
     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-4 col-lg-4">
       <div class="panel panel-warning">
-        <div class="panel-heading">Espécie:</div>
+        <div class="panel-heading">Espécie</div>
         <div class="panel-body">Espécie:
             <select>
               <option value="volvo">Dinheiro</option>
