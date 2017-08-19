@@ -103,79 +103,80 @@
 		</div>
     </div>
     
-	<table class="table table-striped">
-        <tr>
-            <th>Cod.</th>
-            <th>Nome</th>
-            <th>Qnt</th>
-            <th>Preço Unt.</th>
-            <th>Total</th>
-            <th>Excluir</th>
-        </tr>
-
-		
-	<?php
-    	
-    	$bdproduto = new BancoMysql();
-    	$bdproduto->setSelect("
-    		SELECT venda_item.produto_id, produto.nome, venda_item.quantidade, venda_item.valor_unitario
-    		FROM venda_item
-    		JOIN produto
-    		ON produto.id = venda_item.produto_id
-    		WHERE venda_id = '1'
-    	;");
-    	
+    <form id="formVenda" action="post">
     
+    	<table class="table table-striped">
+            <tr>
+                <th>Cod.</th>
+                <th>Nome</th>
+                <th>Qnt</th>
+                <th>Preço Unt.</th>
+                <th>Total</th>
+                <th>Excluir</th>
+            </tr>
+    		
+    	<?php
+        	
+        	$bdproduto = new BancoMysql();
+        	$bdproduto->setSelect("
+        		SELECT venda_item.produto_id, produto.nome, venda_item.quantidade, venda_item.valor_unitario
+        		FROM venda_item
+        		JOIN produto
+        		ON produto.id = venda_item.produto_id
+        		WHERE venda_id = '1'
+        	;");
+        	
+        
+        
+        	// output data of each row
+        	while($rowproduto = $bdproduto->getSelect()) {
+        
+        			// Faz captura de campos
+        			$produto_id	= $rowproduto["produto_id"];
+        			$nome					= $rowproduto["nome"];
+        			$quantidade				= $rowproduto["quantidade"];
+        			$valor_unitario			= $rowproduto["valor_unitario"];
+        	
+        	
+    	?>
     
-    	// output data of each row
-    	while($rowproduto = $bdproduto->getSelect()) {
+        
+            <tr>
+                <td>Produto <?php echo $produtosEServicos_id;?></td>
+                <td><?php echo $nome;?></td>
+                <td><?php echo $quantidade;?></td>
+                <td><?php echo $preco;?></td>
+                <td>Total <?php echo $quantidade*$preco;?></td>
+            </tr>
     
-    			// Faz captura de campos
-    			$produto_id	= $rowproduto["produto_id"];
-    			$nome					= $rowproduto["nome"];
-    			$quantidade				= $rowproduto["quantidade"];
-    			$valor_unitario			= $rowproduto["valor_unitario"];
-    	
-    	
-	?>
-
+    	<?php
     
-        <tr>
-            <td>Produto <?php echo $produtosEServicos_id;?></td>
-            <td><?php echo $nome;?></td>
-            <td><?php echo $quantidade;?></td>
-            <td><?php echo $preco;?></td>
-            <td>Total <?php echo $quantidade*$preco;?></td>
-        </tr>
-
-	<?php
-
-	   };
-    
-	?>
-        <tr>
-        	<td>
-        		<input type="number" class="form-control">
-        	</td>
-        	<td>Nome de produto excepcionalmente grande para fins de teste do layout.</td>
-        	<td>
-        		<input id="qtd" type="number" class="form-control">
-    		</td>
-        	<td>
-        		<input type="number" class="form-control">
-    		</td>
-        	<td>
-        		<input type="number" class="form-control">
-    		</td>
-        	<td>
-        		<button class="btn btn-default" type="button">
-        			<i class="glyphicon glyphicon-remove"></i>
-        			Excluir
-    			</button>
-			</td>
-        </tr>
-	</table>
-	
+    	   };
+        
+    	?>
+            <tr>
+            	<td>
+            		156
+            		<input id="produtoId" type="hidden" value="156">
+            	</td>
+            	<td>Nome de produto excepcionalmente grande para fins de teste do layout.</td>
+            	<td>
+            		<input id="quantidade" type="number" class="form-control" value="3" onblur="calcular();">
+        		</td>
+            	<td>
+            		<input id="precoUnitario" type="number" class="form-control" value="7">
+        		</td>
+            	<td>
+            		<input id="precoTotal" type="number" class="form-control" value="21">
+        		</td>
+            	<td>
+            		<button class="btn btn-default" type="button">
+            			<i class="glyphicon glyphicon-remove"></i>
+        			</button>
+    			</td>
+            </tr>
+    	</table>
+	</form>
 <div class="row col-lg-12">
  
     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-4 col-lg-4">
@@ -199,19 +200,7 @@
         <div class="panel-heading">Condição de pagamento</div>
         
         <div class="panel-body">
-        	<div calss="row col-lg-12">
-    			<div class=" row col-lg-5">
-        		  <div class="input-group">
-        			<input type="text" class="form-control" placeholder="Cód.">
-        			<div class="input-group-btn">
-        			  <button class="btn btn-default" type="submit">
-        				<i class="glyphicon glyphicon-search"></i>
-        			  </button>
-        			</div>
-        		  </div>
-    		  	</div>
-    			<div class="col-lg-7">6x com 30 dias.</div>
-		  	</div>
+        	<div class="row col-lg-12 text-center">6x com 30 dias.</div>
 		  	<div class="row col-lg-12 text-center">Parcelas</div>
 		  	<div class="row col-lg-12">
              	<div class="col-lg-6"><span class="badge badge-primary">1º</span>18/08/2017</div>

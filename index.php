@@ -15,6 +15,10 @@
 
     <title>Console - Sistema ERP</title>
 
+	
+    <!-- Console.js -->
+    <script src="js/console.js"></script>
+	
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -278,9 +282,6 @@
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
-
-    <!-- Console.js -->
-    <script src="js/console.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
