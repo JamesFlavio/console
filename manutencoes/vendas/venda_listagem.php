@@ -1,4 +1,15 @@
-﻿<!--
+﻿<?php
+require_once 'Models/Connection.php';
+require_once 'Models/CadastroDAO.php';
+
+// use Models\Connection;
+// use Models\CadastroDAO;
+
+// $conn = new Connection();
+// $cadastroDao = new CadastroDAO($conn);
+
+?>
+<!--
 BUGS
 01: Criar um script para ver se o cliente trabalha com 2 ou 4 digitos de casas decimais
 02: Exibir casas decimais em quantidade somente quando for item pesado, litros etc.
