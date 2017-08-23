@@ -161,13 +161,27 @@
             	</td>
             	<td>Nome de produto excepcionalmente grande para fins de teste do layout.</td>
             	<td>
-            		<input id="quantidade" type="number" class="form-control" value="3" onblur="calcular();">
+            		<input id="quantidade156" type="number" class="form-control" value="3" onblur="calcular();">
         		</td>
             	<td>
-            		<input id="precoUnitario" type="number" class="form-control" value="7">
+            		<div class="input-group">
+	            		<input id="precoUnitario156" type="number" class="form-control" value="7" onblur="calcular();">
+                		<div class="input-group-btn">
+                    		<button class="btn btn-default" type="button">
+                    			<i class="glyphicon glyphicon-pencil"></i>
+                			</button>
+            			</div>
+        			</div>
         		</td>
             	<td>
-            		<input id="precoTotal" type="number" class="form-control" value="21">
+            		<div class="input-group">
+                		<input id="precoTotal156" type="number" class="form-control" value="21" onblur="calcular();">
+                		<div class="input-group-btn">
+                    		<button class="btn btn-default" type="button">
+                    			<i class="glyphicon glyphicon-pencil"></i>
+                			</button>
+            			</div>
+        			</div>
         		</td>
             	<td>
             		<button class="btn btn-default" type="button">

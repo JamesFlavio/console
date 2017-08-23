@@ -70,17 +70,12 @@ function calcular(){
 				
 				hiddensEncontrados+=1;									//Ver se está sendo usado - Incrementa mais 1 a cada hidden encontrado
 				
+				var produtoId			= form.elements.item(i).getAttribute('id');		//Id do item atual no loop. --- idProduto1.2 onde 1 é a Id do fonecedor e 2 a Id do produto ---
+				var idProduto			= document.getElementById(produtoId).value;		//Captura o valor do hidden --- 1.2 onde 1 é a Id do fonecedor e 2 a Id do produto---
+				var quantidade			= document.getElementById('quantidade'+idProduto).value.replace(',','.');	//Captura o valor do campo quantidade e corrige a "," por ".".
+				var precoUnitario		= document.getElementById('precoUnitario'+idProduto).value.replace(',','.');		//Captura o valor do campo valor_unitario e corrige a "," por ".".
 				
-var produtoId			= form.elements.item(i).getAttribute('id');		//Id do item atual no loop. --- idProduto1.2 onde 1 é a Id do fonecedor e 2 a Id do produto ---
-var idProduto			= document.getElementById(produtoId).value;		//Captura o valor do hidden --- 1.2 onde 1 é a Id do fonecedor e 2 a Id do produto---
-var quantidade			= document.getElementById('quantidade'+idProduto).value.replace(',','.');	//Captura o valor do campo quantidade e corrige a "," por ".".
-var precoUnitario		= document.getElementById('valor_unitario'+idProduto).value.replace(',','.');		//Captura o valor do campo valor_unitario e corrige a "," por ".".
-
-var dadosDoItemCotado	= new Array(quantidade,precoUnitario); // NÃO UTILIZADO
-var itemCotado			= new Array(idProduto,dadosDoItemCotado); // NÃO UTILIZADO
-
-				
-			    document.getElementById('total'+idProduto).value = quantidade * precoUnitario;
+			    document.getElementById('precoTotal'+idProduto).value = quantidade * precoUnitario;
 				
 			}
 		}
