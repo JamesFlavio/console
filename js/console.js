@@ -79,4 +79,7 @@ function calcular(){
 				
 			}
 		}
+ 		
+ 		// AQICIONAR AQUI UMA FUNÇÃO QUE TODA VEZ QUE EXECUTADA A FUNÇÃO CALCULAR, ELE ATUALIZA O CONTEÚDO DE RESUMO.
+ 		
 }

@@ -142,7 +142,10 @@
     
         
             <tr>
-                <td>Produto <?php echo $produtosEServicos_id;?></td>
+                <td>
+                	<i class="glyphicon glyphicon-picture"></i>
+                	<?php echo $produto_id;?>
+                </td>
                 <td><?php echo $nome;?></td>
                 <td><?php echo $quantidade;?></td>
                 <td><?php echo $preco;?></td>
@@ -156,16 +159,21 @@
     	?>
             <tr>
             	<td>
-            		156
-            		<input id="produtoId" type="hidden" value="156">
+            		<div class="input-group text-center">
+                		<i class="glyphicon glyphicon-asterisk"></i>
+                		/ <i class="glyphicon glyphicon-barcode"></i>
+                		/ <i class="glyphicon glyphicon-picture"></i>
+                		156123456789
+                		<input id="produtoId" type="hidden" value="156123456789">
+            		</div>
             	</td>
             	<td>Nome de produto excepcionalmente grande para fins de teste do layout.</td>
             	<td>
-            		<input id="quantidade156" type="number" class="form-control" value="3" onblur="calcular();">
+            		<input id="quantidade156123456789" type="number" class="form-control" value="3" onblur="calcular();">
         		</td>
             	<td>
             		<div class="input-group">
-	            		<input id="precoUnitario156" type="number" class="form-control" value="7" onblur="calcular();">
+	            		<input id="precoUnitario156123456789" type="number" class="form-control" value="7" onblur="calcular();">
                 		<div class="input-group-btn">
                     		<button class="btn btn-default" type="button">
                     			<i class="glyphicon glyphicon-pencil"></i>
@@ -175,7 +183,7 @@
         		</td>
             	<td>
             		<div class="input-group">
-                		<input id="precoTotal156" type="number" class="form-control" value="21" onblur="calcular();">
+                		<input id="precoTotal156123456789" type="number" class="form-control" value="21" onblur="calcular();">
                 		<div class="input-group-btn">
                     		<button class="btn btn-default" type="button">
                     			<i class="glyphicon glyphicon-pencil"></i>
@@ -195,7 +203,10 @@
  
     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-4 col-lg-4">
       <div class="panel panel-warning">
-        <div class="panel-heading">Espécie</div>
+        <div class="panel-heading">
+        	<i class="glyphicon glyphicon-usd"></i>
+        	Espécie
+        </div>
         <div class="panel-body">Espécie:
             <select>
               <option value="volvo">Dinheiro</option>
@@ -211,7 +222,10 @@
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-lg-4">
       <div class="panel panel-success">
       
-        <div class="panel-heading">Condição de pagamento</div>
+        <div class="panel-heading">
+        	<i class="glyphicon glyphicon-duplicate"></i>
+        	Condição de pagamento
+        </div>
         
         <div class="panel-body">
         	<div class="row col-lg-12 text-center">6x com 30 dias.</div>
@@ -231,7 +245,10 @@
     
     <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4 col-lg-4">
       <div class="panel panel-primary">
-        <div class="panel-heading">Resumo</div>
+        <div class="panel-heading">
+       		<i class="glyphicon glyphicon-shopping-cart"></i>
+       		Resumo
+        </div>
         <div class="panel-body">
 			<div>
             	<table class="table table-condensed table-responsive">
