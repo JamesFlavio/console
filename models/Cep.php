@@ -6,6 +6,12 @@ class Cep{
     private $bairro;
     private $cidade_ibge;
     
+    public function __construct(){}
+    
+    public function __get($name){
+        return $this->$name;
+    }
+    
     public function getCep(){
         return $this->cep;
     }
@@ -31,6 +37,4 @@ class Cep{
     }
 
 }
-
-?>
 

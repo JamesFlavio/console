@@ -26,7 +26,7 @@ class CadastroDAO{
      * @throws PDOException se falhar ao executar o sql.
      * @return void.
      */
-    public function createOrUpdateCadastro(Cadastro $cadastro){
+    public function createOrUpdate(Cadastro $cadastro){
         try {
             if ($cadastro->getId() != "") {
                 $stmt = $this->conn->prepare("UPDATE cadastro SET tipo = ?,
@@ -141,7 +141,7 @@ class CadastroDAO{
      * @throws PDOException se falahr ao executar o sql.
      * @return Cadastro
      */
-    public function listCadastroById($id){
+    public function listById($id){
         try{
             $stmt = $this->conn->prepare("SELECT * FROM cadastro WHERE id = ?");
             $stmt->bindParam(1, $id, PDO::PARAM_INT);
@@ -163,7 +163,7 @@ class CadastroDAO{
      * @throws PDOException se falhar ao executar o sql.
      * @return array Cadastro.
      */
-    public function listCadastrosByTipo($tipo){
+    public function listByTipo($tipo){
         try{
             $stmt = $this->conn->prepare("SELECT * FROM cadastro WHERE tipo = ?");
             $stmt->bindParam(1, $tipo, PDO::PARAM_STR);

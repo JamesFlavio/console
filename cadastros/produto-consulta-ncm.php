@@ -1,5 +1,6 @@
 <?php
-
+require_once '../Models/Connection.php';
+require_once '../Models/NcmDAO.php';
 //BUGS/ALTERAÇÕES
 // 01: Se o NCM for digitado parcialmente, deve continuar na mesma página e listar os encontrados com base no conteúdo
 
@@ -17,7 +18,11 @@
     
     $ncm        = $rows["ncm"];
 
+//     $conn = new Connection();
+//     $ncmDao = new ncmDAO($conn);
     
+//     print_r($ncmDao->listByNcmOrDescricao($ncm_consultado));
+
     // 2.1: Se não encontrado o NCM digitado/capturado, permanece na página para outra consulta
         
 ?>
