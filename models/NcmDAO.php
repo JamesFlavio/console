@@ -46,11 +46,11 @@ class NcmDAO{
         }
     }
     
-    public function listByNcmOrDescricao($ncm){
+    public function listByNcmOrDescricao($ncmOrDescricao){
         try{
             $stmt = $this->conn->prepare("SELECT * FROM ncm WHERE ncm LIKE ? OR descricao LIKE ?");
-            $stmt->bindValue(1, "$ncm%");
-            $stmt->bindValue(2, "%$ncm%");
+            $stmt->bindValue(1, "$ncmOrDescricao%");
+            $stmt->bindValue(2, "%$ncmOrDescricao%");
             if ($stmt->execute()) {
                 $stmt->setFetchMode(PDO::FETCH_CLASS, 'Ncm');
                 return $stmt->fetchAll();

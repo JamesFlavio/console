@@ -42,5 +42,21 @@ class CfopDAO{
             echo "Erro: ".$erro->getMessage();
         }
     }
+    
+    public function listByCfopOrDescricao($cfopOrDescricao){
+        try{
+            $stmt = $this->conn->prepare("SELECT * FROM cfop WHERE cfop LIKE ? OR descricao LIKE ?");
+            $stmt->bindValue(1, "$cfopOrDescricao%");
+            $stmt->bindValue(2, "%$cfopOrDescricao%");
+            if ($stmt->execute()) {
+                $stmt->setFetchMode(PDO::FETCH_CLASS, 'Cfop');
+                return $stmt->fetchAll();
+            }else {
+                throw new PDOException("Não foi possível executar a declaração sql.");
+            }
+        }catch(PDOException $erro){
+            echo "Erro: ".$erro->getMessage();
+        }
+    }
 }
 
