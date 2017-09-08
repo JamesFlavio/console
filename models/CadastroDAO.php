@@ -1,9 +1,4 @@
 <?php
-//namespace Models;
-
-// use PDO;
-// use PDOException;
-
 require_once 'Connection.php';
 require_once 'Cadastro.php';
 
