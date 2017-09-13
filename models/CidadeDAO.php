@@ -1,6 +1,6 @@
 <?php
 
-class CidadeDao{
+class CidadeDAO{
 
     private $conn;
     

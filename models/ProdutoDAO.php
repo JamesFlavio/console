@@ -1,7 +1,7 @@
 <?php
 require_once 'Produto.php';
 
-class ProdutoDao{
+class ProdutoDAO{
 
     private $conn;
     
