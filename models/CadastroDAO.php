@@ -72,11 +72,11 @@ class CadastroDAO{
                                             VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             }
             $stmt->bindValue(1, $cadastro->getTipo());
-            $stmt->bindValue(2, $cadastro->getCnpj_ou_cpf());
-            $stmt->bindValue(3, $cadastro->getIe_ou_rg());
+            $stmt->bindValue(2, $cadastro->getCnpj_cpf());
+            $stmt->bindValue(3, $cadastro->getIe_rg());
             $stmt->bindValue(4, $cadastro->getIm());
-            $stmt->bindValue(5, $cadastro->getRazao_social_ou_nome());
-            $stmt->bindValue(6, $cadastro->getNome_fantasia_ou_sobrenome());
+            $stmt->bindValue(5, $cadastro->getRazao_social_nome());
+            $stmt->bindValue(6, $cadastro->getNome_fantasia_sobrenome());
             $stmt->bindValue(7, $cadastro->getApelido());
             $stmt->bindValue(8, $cadastro->getCep_cep());
             $stmt->bindValue(9, $cadastro->getEndereco());
@@ -173,6 +173,29 @@ class CadastroDAO{
             echo "Erro: ".$erro->getMessage();
         }
     }
+    /**
+     * Retona um array de objetos da classe Cadastro.
+     *
+     * @param string $cnpj_cpf Numero do CNPJ/CPF do cliente.
+     *
+     * @throws PDOException se falhar ao executar o sql.
+     * @return array Cadastro.
+     */
+    public function listByCnpjCpf($cnpj_cpf){
+        try{
+            $stmt = $this->conn->prepare("SELECT * FROM cadastro WHERE cnpj_ou_cpf = ?");
+            $stmt->bindParam(1, $cnpj_cpf, PDO::PARAM_STR);
+            if ($stmt->execute()) {
+                $stmt->setFetchMode(PDO::FETCH_CLASS, 'Cadastro');
+                return $stmt->fetchAll();
+            }else {
+                throw new PDOException("Não foi possível executar a declaração sql.");
+            }
+            
+        }catch(PDOException $erro){
+            echo "Erro: ".$erro->getMessage();
+        }
+    }
    /**
     * Atribui os valores em um objeto Cadastro.
     * 
@@ -182,11 +205,11 @@ class CadastroDAO{
     public function setCadastro($row){
         $cadastro = new Cadastro();    
        
-        $cadastro->setCnpj_ou_cpf($row->cnpj_ou_cpf);
-        $cadastro->setIe_ou_rg($row->ie_ou_rg);
+        $cadastro->setCnpj_cpf($row->cnpj_cpf);
+        $cadastro->setIe_rg($row->ie_rg);
         $cadastro->setIm($row->im);
-        $cadastro->setRazao_social_ou_nome($row->razao_social_ou_nome);
-        $cadastro->setNome_fantasia_ou_sobrenome($row->nome_fantasia_ou_sobrenome);
+        $cadastro->setRazao_social_nome($row->razao_social_nome);
+        $cadastro->setNome_fantasia_sobrenome($row->nome_fantasia_sobrenome);
         $cadastro->setApelido($row->apelido);
         $cadastro->setCep_cep($row->cep_cep);
         $cadastro->setEndereco($row->endereco);

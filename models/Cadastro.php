@@ -7,13 +7,13 @@
  */
 class Cadastro{
     
-    private $id = "";
+    private $id;
     private $tipo;
-    private $cnpj_ou_cpf;
-    private $ie_ou_rg;
+    private $cnpj_cpf;
+    private $ie_rg;
     private $im;
-    private $razao_social_ou_nome;
-    private $nome_fantasia_ou_sobrenome;
+    private $razao_social_nome;
+    private $nome_fantasia_sobrenome;
     private $apelido;
     private $cep_cep;
     private $endereco;
@@ -50,24 +50,24 @@ class Cadastro{
         return $this->tipo;
     }
 
-    public function getCnpj_ou_cpf(){
-        return $this->cnpj_ou_cpf;
+    public function getCnpj_cpf(){
+        return $this->cnpj_cpf;
     }
 
-    public function getIe_ou_rg(){
-        return $this->ie_ou_rg;
+    public function getIe_rg(){
+        return $this->ie_rg;
     }
 
     public function getIm(){
         return $this->im;
     }
 
-    public function getRazao_social_ou_nome(){
-        return $this->razao_social_ou_nome;
+    public function getRazao_social_nome(){
+        return $this->razao_social_nome;
     }
 
-    public function getNome_fantasia_ou_sobrenome(){
-        return $this->nome_fantasia_ou_sobrenome;
+    public function getNome_fantasia_sobrenome(){
+        return $this->nome_fantasia_sobrenome;
     }
 
     public function getApelido(){
@@ -138,24 +138,24 @@ class Cadastro{
         $this->tipo = $tipo;
     }
 
-    public function setCnpj_ou_cpf($cnpj_ou_cpf){
-        $this->cnpj_ou_cpf = $cnpj_ou_cpf;
+    public function setCnpj_cpf($cnpj_cpf){
+        $this->cnpj_cpf = $cnpj_cpf;
     }
 
-    public function setIe_ou_rg($ie_ou_rg){
-        $this->ie_ou_rg = $ie_ou_rg;
+    public function setIe_rg($ie_rg){
+        $this->ie_rg = $ie_rg;
     }
 
     public function setIm($im){
         $this->im = $im;
     }
 
-    public function setRazao_social_ou_nome($razao_social_ou_nome){
-        $this->razao_social_ou_nome = $razao_social_ou_nome;
+    public function setRazao_social_nome($razao_social_nome){
+        $this->razao_social_nome = $razao_social_nome;
     }
 
-    public function setNome_fantasia_ou_sobrenome($nome_fantasia_ou_sobrenome){
-        $this->nome_fantasia_ou_sobrenome = $nome_fantasia_ou_sobrenome;
+    public function setNome_fantasia_sobrenome($nome_fantasia_sobrenome){
+        $this->nome_fantasia_sobrenome = $nome_fantasia_sobrenome;
     }
 
     public function setApelido($apelido){

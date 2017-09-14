@@ -1,8 +1,4 @@
 <?php
-// namespace Models;
-
-// use PDO;
-// use PDOException;
 
 class Connection{
     

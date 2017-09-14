@@ -19,14 +19,14 @@ class CepDAO{
     public function createOrUpdate(Cep $cep){
         try {
             if ($cep->getCep() != "") {
-                $stmt = $this->conn->prepare("UPDATE cadastro 
+                $stmt = $this->conn->prepare("UPDATE cep 
                                               SET bairro = ?, cidade_ibge = ?
                                               WHERE cep = ?");
                 $stmt->bindValue(1, $cep->getBairro());
                 $stmt->bindValue(2, $cep->getCidade_ibge());
                 $stmt->bindValue(3, $cep->getCep());
             } else {
-                $stmt = $this->conn->prepare("INSERT INTO cadastro (cep,bairro,cidade_ibge) VALUES (?,?,?)");
+                $stmt = $this->conn->prepare("INSERT INTO cep (cep,bairro,cidade_ibge) VALUES (?,?,?)");
                 $stmt->bindValue(1, $cep->getCep());
                 $stmt->bindValue(2, $cep->getBairro());
                 $stmt->bindValue(3, $cep->getCidade_ibge());

@@ -1,14 +1,12 @@
 <?php
 
-$cnpj_ou_cpf				= $_POST ["cnpj_ou_cpf"];
+$cnpj_cpf				    = $_POST ["cnpj_ou_cpf"];
 $ie_ou_rg					= $_POST ["ie_ou_rg"];
 $im							= $_POST ["im"];
-$razao_social_ou_nome		= $_POST ["razao_social_ou_nome"];
-$nome_fantasia_ou_sobrenome	= $_POST ["nome_fantasia_ou_sobrenome"];
+$razao_social_nome		    = $_POST ["razao_social_ou_nome"];
+$nome_fantasia_sobrenome	= $_POST ["nome_fantasia_ou_sobrenome"];
 $apelido					= $_POST ["apelido"];
 $cep						= str_ireplace("-","",$_POST ["cep"]); // CEP no formato ########
-$cidade						= $_POST ["cidade"]; // ??? NÃO UTILIZADO POIS VEM DO CEP
-$ibge						= $_POST ["ibge"];
 $endereco					= $_POST ["endereco"];
 $numero						= $_POST ["numero"];
 $bairro						= $_POST ["bairro"];
@@ -25,10 +23,56 @@ $observacao					= $_POST ["observacao"];
 
 
 
-include("php/conexao-mysql.php");
+//include("php/conexao-mysql.php");
 
-# Consulta se o CNPJ ou CPF ja não consta na base de dados
-$sqlConsulta 	= "SELECT cnpj_ou_cpf FROM cadastro WHERE cnpj_ou_cpf = '$cnpj_ou_cpf';";
+require_once 'models/Connection.php';
+require_once 'models/CadastroDAO.php';
+require_once 'models/Cadastro.php';
+
+$conn = new Connection();
+$cadastroDao = new CadastroDAO($conn);
+
+$cadastros = $cadastroDao->listByCnpjCpf($cnpj_cpf);
+
+if(!$cadastros){
+    $cadastro = new Cadastro();
+    //$cadastro->setId('');
+    $cadastro->setTipo($tipo);
+    $cadastro->setCnpj_cpf($cnpj_cpf);
+    $cadastro->setIe_rg($ie_ou_rg);
+    $cadastro->setIm($im);
+    $cadastro->setRazao_social_nome($razao_social_nome);
+    $cadastro->setNome_fantasia_sobrenome($nome_fantasia_sobrenome);
+    $cadastro->setApelido($apelido);
+    $cadastro->setCep_cep($cep);
+    $cadastro->setEndereco($endereco);
+    $cadastro->setNumero($numero);
+    $cadastro->setBairro($bairro);
+    $cadastro->setTelefone($telefone);
+    $cadastro->setRamal($ramal);
+    $cadastro->setFax($fax);
+    $cadastro->setCelular($celular);
+    $cadastro->setResponsavel($responsavel);
+    $cadastro->setSite($site);
+    $cadastro->setNovidade($novidade);
+    $cadastro->setPromocao($promocao);
+    $cadastro->setObservacao($observacao);
+    
+    $cadastroDao->createOrUpdate($cadastro);
+}
+
+
+
+
+
+
+
+
+
+
+
+/* # Consulta se o CNPJ ou CPF ja não consta na base de dados
+$sqlConsulta 	= "SELECT cnpj_ou_cpf FROM cadastro WHERE cnpj_ou_cpf = '$cnpj_cpf';";
 $queryConsulta	= mysqli_query($conexaoMysql, $sqlConsulta);
 $quantidade		= mysqli_num_rows($queryConsulta);
 
@@ -64,5 +108,5 @@ if($quantidade==0){
 	$msgAtencao	= "Já cadastrado!";
 	echo $msgAtencao;
 	
-};
+}; */
 ?>
