@@ -180,9 +180,24 @@ case "adicionar":
 
 				<?php 
 
-				include("php/conexao-mysql.php");
-
-				// SELECT dos estado
+				require_once 'models/Connection.php';//("php/conexao-mysql.php");
+                require_once 'models/Estado.php';
+                require_once 'models/EstadoDAO.php';
+                
+                $conn = new Connection();
+                $estadoDao = new EstadoDAO($conn);
+                $listaEstados = $estadoDao->listAll();
+                
+                foreach ($listaEstados as $estado){
+                    if($estado->uf==$uf){
+                        $selected = "selected";
+                    }else{
+                        $selected ="";
+                    }
+                    echo "<option id='$estado->uf' value='$estado->uf' $selected>$estado->uf - $estado->nome </option>";
+                }
+                /*
+ 				// SELECT dos estado
 				$sqlEstados			= "SELECT uf,nome FROM estado;";
 				$queryEstados		= mysqli_query($conexaoMysql,$sqlEstados);
 				
@@ -199,7 +214,7 @@ case "adicionar":
 					echo "<option id='$estadoUf' value='$estadoUf' $selected>$estadoUf - $estadoNome</option>";
 				
 				}
-				
+				 */
 				?>
 			</select>
 		</div>
