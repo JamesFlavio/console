@@ -13,6 +13,20 @@ class EstadoDAO{
         $this->conn = $conn->getPdo();
     }
     
+    public function listAll(){
+        try{
+            $stmt = $this->conn->prepare("SELECT * FROM estado");
+            if ($stmt->execute()) {
+                $stmt->setFetchMode(PDO::FETCH_CLASS, 'Estado');
+                return $stmt->fetchAll();
+            }else {
+                throw new PDOException("Não foi possível executar a declaração sql.");
+            }
+        }catch(PDOException $erro){
+            echo "Erro: ".$erro->getMessage();
+        }
+    }
+    
     public function listByUf($uf){
         try{
             $stmt = $this->conn->prepare("SELECT * FROM estado WHERE uf = ?");
