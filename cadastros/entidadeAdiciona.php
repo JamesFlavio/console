@@ -180,7 +180,7 @@ case "adicionar":
 
 				<?php 
 
-				require_once 'models/Connection.php';//("php/conexao-mysql.php");
+				require_once 'models/Connection.php';
                 require_once 'models/Estado.php';
                 require_once 'models/EstadoDAO.php';
                 
@@ -194,27 +194,8 @@ case "adicionar":
                     }else{
                         $selected ="";
                     }
-                    echo "<option id='$estado->uf' value='$estado->uf' $selected>$estado->uf - $estado->nome </option>";
+                    echo "<option id='$estado->uf' value='$estado->uf' $selected>$estado->uf - $estado->nome</option>";
                 }
-                /*
- 				// SELECT dos estado
-				$sqlEstados			= "SELECT uf,nome FROM estado;";
-				$queryEstados		= mysqli_query($conexaoMysql,$sqlEstados);
-				
-				while($rowsEstados	= mysqli_fetch_assoc($queryEstados)){
-					
-					$estadoUf		= $rowsEstados['uf'];
-					$estadoNome		= $rowsEstados['nome'];
-					
-					// Veirifica se algum estado será selecionado com base na variável
-					// $uf retornada do formulário
-					if($estadoUf==$uf){$selected = "selected";} else {$selected ="";}
-					
-					// Imprime os resultados
-					echo "<option id='$estadoUf' value='$estadoUf' $selected>$estadoUf - $estadoNome</option>";
-				
-				}
-				 */
 				?>
 			</select>
 		</div>
