@@ -64,7 +64,7 @@ BUGs
 	
 	switch ($console) {
 	case "adicionar":
-		include("cadastros/entidades-adicionar.php");
+		include("cadastros/entidadeAdiciona.php");
 		break;
 	default:
 		include("cadastros/entidades-listagem.php");
